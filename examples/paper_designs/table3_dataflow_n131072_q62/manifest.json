@@ -1,0 +1,655 @@
+{
+  "top_name": "LDe_rom1",
+  "n": 131072,
+  "lanes": 8,
+  "frame_cycles": 16384,
+  "latency": 16677,
+  "modules": [
+    "LDe_rom1_s0_c0",
+    "LDe_rom1_s10_bu",
+    "LDe_rom1_s11_bu",
+    "LDe_rom1_s12_bu",
+    "LDe_rom1_s13_bu",
+    "LDe_rom1_s14_bu",
+    "LDe_rom1_s15_bu",
+    "LDe_rom1_s16_bu",
+    "LDe_rom1_s1_bu",
+    "LDe_rom1_s1_c0",
+    "LDe_rom1_s2_bu",
+    "LDe_rom1_s2_c0",
+    "LDe_rom1_s3_bu",
+    "LDe_rom1_s4_bu",
+    "LDe_rom1_s5_bu",
+    "LDe_rom1_s6_bu",
+    "LDe_rom1_s7_bu",
+    "LDe_rom1_s8_bu",
+    "LDe_rom1_s9_bu"
+  ],
+  "tables": 59,
+  "load_words": 262134,
+  "q_ports": [
+    "Q",
+    "MU",
+    "QHALF"
+  ],
+  "q_port_widths": [
+    62,
+    64,
+    62
+  ],
+  "in_width": 62,
+  "out_width": 62,
+  "dir_port": true,
+  "tw_width": 62,
+  "test_cycles": 49152,
+  "load_lanes": 1,
+  "load_by_dir": false,
+  "stream_classes": 0,
+  "stream_width": 0,
+  "stages": [
+    {
+      "exchange": null,
+      "buLatency": 3
+    },
+    {
+      "exchange": null,
+      "buLatency": 16
+    },
+    {
+      "exchange": null,
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        0,
+        0,
+        1
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        1,
+        1,
+        2
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        2,
+        2,
+        4
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        0,
+        3,
+        8
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        1,
+        4,
+        16
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        2,
+        5,
+        32
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        0,
+        6,
+        64
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        1,
+        7,
+        128
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        2,
+        8,
+        256
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        0,
+        9,
+        512
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        1,
+        10,
+        1024
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        2,
+        11,
+        2048
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        0,
+        12,
+        4096
+      ],
+      "buLatency": 16
+    },
+    {
+      "exchange": [
+        1,
+        13,
+        8192
+      ],
+      "buLatency": 16
+    }
+  ],
+  "moduli": 1,
+  "modulus_index_bits": 1,
+  "lead": 1,
+  "per_frame_dir": true,
+  "loadable_moduli": true,
+  "slot_tables": [
+    {
+      "id": 0,
+      "base": 0,
+      "words": 2,
+      "offsets": [
+        4,
+        22
+      ]
+    },
+    {
+      "id": 1,
+      "base": 2,
+      "words": 2,
+      "offsets": [
+        22
+      ]
+    },
+    {
+      "id": 2,
+      "base": 4,
+      "words": 2,
+      "offsets": [
+        22
+      ]
+    },
+    {
+      "id": 3,
+      "base": 6,
+      "words": 4,
+      "offsets": [
+        41
+      ]
+    },
+    {
+      "id": 4,
+      "base": 10,
+      "words": 4,
+      "offsets": [
+        41
+      ]
+    },
+    {
+      "id": 5,
+      "base": 14,
+      "words": 4,
+      "offsets": [
+        41
+      ]
+    },
+    {
+      "id": 6,
+      "base": 18,
+      "words": 4,
+      "offsets": [
+        41
+      ]
+    },
+    {
+      "id": 7,
+      "base": 22,
+      "words": 8,
+      "offsets": [
+        61
+      ]
+    },
+    {
+      "id": 8,
+      "base": 30,
+      "words": 8,
+      "offsets": [
+        61
+      ]
+    },
+    {
+      "id": 9,
+      "base": 38,
+      "words": 8,
+      "offsets": [
+        61
+      ]
+    },
+    {
+      "id": 10,
+      "base": 46,
+      "words": 8,
+      "offsets": [
+        61
+      ]
+    },
+    {
+      "id": 11,
+      "base": 54,
+      "words": 16,
+      "offsets": [
+        83
+      ]
+    },
+    {
+      "id": 12,
+      "base": 70,
+      "words": 16,
+      "offsets": [
+        83
+      ]
+    },
+    {
+      "id": 13,
+      "base": 86,
+      "words": 16,
+      "offsets": [
+        83
+      ]
+    },
+    {
+      "id": 14,
+      "base": 102,
+      "words": 16,
+      "offsets": [
+        83
+      ]
+    },
+    {
+      "id": 15,
+      "base": 118,
+      "words": 32,
+      "offsets": [
+        109
+      ]
+    },
+    {
+      "id": 16,
+      "base": 150,
+      "words": 32,
+      "offsets": [
+        109
+      ]
+    },
+    {
+      "id": 17,
+      "base": 182,
+      "words": 32,
+      "offsets": [
+        109
+      ]
+    },
+    {
+      "id": 18,
+      "base": 214,
+      "words": 32,
+      "offsets": [
+        109
+      ]
+    },
+    {
+      "id": 19,
+      "base": 246,
+      "words": 64,
+      "offsets": [
+        143
+      ]
+    },
+    {
+      "id": 20,
+      "base": 310,
+      "words": 64,
+      "offsets": [
+        143
+      ]
+    },
+    {
+      "id": 21,
+      "base": 374,
+      "words": 64,
+      "offsets": [
+        143
+      ]
+    },
+    {
+      "id": 22,
+      "base": 438,
+      "words": 64,
+      "offsets": [
+        143
+      ]
+    },
+    {
+      "id": 23,
+      "base": 502,
+      "words": 128,
+      "offsets": [
+        193
+      ]
+    },
+    {
+      "id": 24,
+      "base": 630,
+      "words": 128,
+      "offsets": [
+        193
+      ]
+    },
+    {
+      "id": 25,
+      "base": 758,
+      "words": 128,
+      "offsets": [
+        193
+      ]
+    },
+    {
+      "id": 26,
+      "base": 886,
+      "words": 128,
+      "offsets": [
+        193
+      ]
+    },
+    {
+      "id": 27,
+      "base": 1014,
+      "words": 256,
+      "offsets": [
+        275
+      ]
+    },
+    {
+      "id": 28,
+      "base": 1270,
+      "words": 256,
+      "offsets": [
+        275
+      ]
+    },
+    {
+      "id": 29,
+      "base": 1526,
+      "words": 256,
+      "offsets": [
+        275
+      ]
+    },
+    {
+      "id": 30,
+      "base": 1782,
+      "words": 256,
+      "offsets": [
+        275
+      ]
+    },
+    {
+      "id": 31,
+      "base": 2038,
+      "words": 512,
+      "offsets": [
+        421
+      ]
+    },
+    {
+      "id": 32,
+      "base": 2550,
+      "words": 512,
+      "offsets": [
+        421
+      ]
+    },
+    {
+      "id": 33,
+      "base": 3062,
+      "words": 512,
+      "offsets": [
+        421
+      ]
+    },
+    {
+      "id": 34,
+      "base": 3574,
+      "words": 512,
+      "offsets": [
+        421
+      ]
+    },
+    {
+      "id": 35,
+      "base": 4086,
+      "words": 1024,
+      "offsets": [
+        695
+      ]
+    },
+    {
+      "id": 36,
+      "base": 5110,
+      "words": 1024,
+      "offsets": [
+        695
+      ]
+    },
+    {
+      "id": 37,
+      "base": 6134,
+      "words": 1024,
+      "offsets": [
+        695
+      ]
+    },
+    {
+      "id": 38,
+      "base": 7158,
+      "words": 1024,
+      "offsets": [
+        695
+      ]
+    },
+    {
+      "id": 39,
+      "base": 8182,
+      "words": 2048,
+      "offsets": [
+        1225
+      ]
+    },
+    {
+      "id": 40,
+      "base": 10230,
+      "words": 2048,
+      "offsets": [
+        1225
+      ]
+    },
+    {
+      "id": 41,
+      "base": 12278,
+      "words": 2048,
+      "offsets": [
+        1225
+      ]
+    },
+    {
+      "id": 42,
+      "base": 14326,
+      "words": 2048,
+      "offsets": [
+        1225
+      ]
+    },
+    {
+      "id": 43,
+      "base": 16374,
+      "words": 4096,
+      "offsets": [
+        2267
+      ]
+    },
+    {
+      "id": 44,
+      "base": 20470,
+      "words": 4096,
+      "offsets": [
+        2267
+      ]
+    },
+    {
+      "id": 45,
+      "base": 24566,
+      "words": 4096,
+      "offsets": [
+        2267
+      ]
+    },
+    {
+      "id": 46,
+      "base": 28662,
+      "words": 4096,
+      "offsets": [
+        2267
+      ]
+    },
+    {
+      "id": 47,
+      "base": 32758,
+      "words": 8192,
+      "offsets": [
+        4333
+      ]
+    },
+    {
+      "id": 48,
+      "base": 40950,
+      "words": 8192,
+      "offsets": [
+        4333
+      ]
+    },
+    {
+      "id": 49,
+      "base": 49142,
+      "words": 8192,
+      "offsets": [
+        4333
+      ]
+    },
+    {
+      "id": 50,
+      "base": 57334,
+      "words": 8192,
+      "offsets": [
+        4333
+      ]
+    },
+    {
+      "id": 51,
+      "base": 65526,
+      "words": 16384,
+      "offsets": [
+        8447
+      ]
+    },
+    {
+      "id": 52,
+      "base": 81910,
+      "words": 16384,
+      "offsets": [
+        8447
+      ]
+    },
+    {
+      "id": 53,
+      "base": 98294,
+      "words": 16384,
+      "offsets": [
+        8447
+      ]
+    },
+    {
+      "id": 54,
+      "base": 114678,
+      "words": 16384,
+      "offsets": [
+        8447
+      ]
+    },
+    {
+      "id": 55,
+      "base": 131062,
+      "words": 32768,
+      "offsets": [
+        16657
+      ]
+    },
+    {
+      "id": 56,
+      "base": 163830,
+      "words": 32768,
+      "offsets": [
+        16657
+      ]
+    },
+    {
+      "id": 57,
+      "base": 196598,
+      "words": 32768,
+      "offsets": [
+        16657
+      ]
+    },
+    {
+      "id": 58,
+      "base": 229366,
+      "words": 32768,
+      "offsets": [
+        16657
+      ]
+    }
+  ]
+}

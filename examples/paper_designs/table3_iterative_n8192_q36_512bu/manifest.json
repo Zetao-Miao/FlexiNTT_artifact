@@ -1,0 +1,235 @@
+{
+  "top_name": "Ib_n8192_q36b_B512_auto_rns_rec",
+  "n": 8192,
+  "butterflies": 512,
+  "io_lanes": 32,
+  "banks": 3072,
+  "bank_depth": 8,
+  "width": 36,
+  "out_width": 36,
+  "bu_latency": 13,
+  "write_latency": 19,
+  "out_latency": 4,
+  "gaps": [
+    12,
+    13,
+    15,
+    12,
+    13,
+    15,
+    12,
+    13,
+    15,
+    12,
+    13,
+    15,
+    0
+  ],
+  "q_ports": [
+    "Q",
+    "MU",
+    "QHALF"
+  ],
+  "q_port_widths": [
+    36,
+    38,
+    36
+  ],
+  "load_words": 0,
+  "tw_width": 0,
+  "dir_port": true,
+  "mem_style": "distributed",
+  "twiddle_style": "block",
+  "mem_org": "constgeo",
+  "cross_regs": 0,
+  "cg_shifts": [
+    0,
+    1,
+    2,
+    0,
+    1,
+    2,
+    0,
+    1,
+    2,
+    0,
+    1,
+    2,
+    0
+  ],
+  "tw_bases": [
+    0,
+    1,
+    3,
+    7,
+    15,
+    23,
+    31,
+    39,
+    47,
+    55,
+    63,
+    71,
+    79
+  ],
+  "tw_depths": [
+    1,
+    2,
+    4,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8
+  ],
+  "mem_org_report": null,
+  "twiddle_buffer": "recycle",
+  "tw_lanes": 2,
+  "tw_entry_cols": [
+    36
+  ],
+  "tw_beat_width": 72,
+  "header_beats": 10,
+  "header_layout": [
+    [
+      "Q",
+      1,
+      36
+    ],
+    [
+      "MU",
+      37,
+      38
+    ],
+    [
+      "QHALF",
+      75,
+      36
+    ]
+  ],
+  "stage_beats": [
+    1,
+    2,
+    4,
+    8,
+    8,
+    14,
+    14,
+    14,
+    14,
+    14,
+    22,
+    32,
+    64
+  ],
+  "q_bubble": 15,
+  "twiddle_source": "rec",
+  "rec_group": 8,
+  "rec_generators": 64,
+  "rec_units": 211,
+  "rec_gen_latency": 14,
+  "rec_stream_beats": 23,
+  "rec_factor_layout": [
+    [
+      2,
+      0,
+      111,
+      36
+    ],
+    [
+      2,
+      1,
+      147,
+      36
+    ],
+    [
+      3,
+      0,
+      183,
+      36
+    ],
+    [
+      3,
+      1,
+      219,
+      36
+    ],
+    [
+      4,
+      0,
+      255,
+      36
+    ],
+    [
+      4,
+      1,
+      291,
+      36
+    ],
+    [
+      5,
+      0,
+      327,
+      36
+    ],
+    [
+      5,
+      1,
+      363,
+      36
+    ],
+    [
+      6,
+      0,
+      399,
+      36
+    ],
+    [
+      6,
+      1,
+      435,
+      36
+    ],
+    [
+      7,
+      0,
+      471,
+      36
+    ],
+    [
+      7,
+      1,
+      507,
+      36
+    ],
+    [
+      8,
+      0,
+      543,
+      36
+    ],
+    [
+      8,
+      1,
+      579,
+      36
+    ],
+    [
+      9,
+      0,
+      615,
+      36
+    ],
+    [
+      9,
+      1,
+      651,
+      36
+    ]
+  ]
+}

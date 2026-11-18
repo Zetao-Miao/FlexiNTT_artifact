@@ -1,0 +1,151 @@
+# NTT design-space exploration request
+#
+# Fill this file in and run        ./runDse.py userNTTinput.toml
+# A fresh copy under another name  ./runDse.py --template other_name.toml
+#
+# How to fill it in
+#   - A line that starts with '#' is switched off. Remove the '#' to set that value.
+#   - A limit that stays switched off does not constrain the search.
+#   - Text values need quotes ("both"). Numbers and true/false do not.
+#   - Large numbers may be written 1e6 or 1_000_000.
+#   - An option on the command line overrides the value in this file.
+
+
+# ---------------------------------------------------------------------------------------------------------
+[ntt]                                   # the transform the core must compute
+# ---------------------------------------------------------------------------------------------------------
+points = 4096                           # N, a power of two
+
+# The moduli. Choose ONE of the three ways.
+#   (a) The moduli are known when the core is built. List them all. Tables may then be stored in ROM.
+# moduli = [4293918721, 4293836801]
+#   (b) The moduli are known when the core is built, and the tool may choose them.
+#       It picks `num_moduli` NTT-friendly primes of `modulus_bits` bits.
+# pick_moduli = true
+#   (c) The moduli arrive at run time. Give the width only. No ROM tables.
+#       A core that changes the modulus per polynomial then keeps `num_moduli` moduli in slots that are
+#       written from outside while it runs, and each polynomial names its slot.
+modulus_bits = 32
+
+# A special form of the moduli that a reduction can use.
+#   "ntt"              nothing beyond what the NTT needs, q = 1 (mod 2N). Word-level Montgomery already uses this.
+#   "friendly"         q = h * 2^v + 1 with v above log2(2N). Set form_v. Word-level Montgomery gets cheaper.
+#   "kred"             q = k * 2^m + 1 with a short k. Set form_k_bits. Opens K-RED.
+#   "pseudo_mersenne"  q = 2^modulus_bits - c with a short c. Set form_c_bits. Opens Solinas.
+# It matters for way (c), where the tool cannot see the moduli. With (a) and (b) the tool tries every special
+# reduction on the listed moduli by itself, and it checks that they have the form stated here.
+modulus_form = "ntt"
+# form_v = 20
+# form_k_bits = 8
+# form_c_bits = 16
+
+num_moduli = 1                          # how many RNS moduli the workload uses (must match the list in (a))
+
+transform = "negacyclic"                # "cyclic" | "negacyclic" | "both"
+direction = "both"                      # "forward" | "inverse" | "both"
+
+# May two consecutive polynomials differ, with no idle cycle between them?
+modulus_per_polynomial = true          # true: each polynomial may use another modulus
+direction_per_polynomial = true        # true: each polynomial may be forward or inverse
+
+# Moduli that are not known at design time (way (b)), with a change per polynomial: how the twiddle tables of
+# the moduli are kept in a dataflow or multi-step core.
+#   "resident"  the tables of all num_moduli moduli are loaded once and stay in the core
+#   "rotating"  the core has only as many slots as polynomials can be in its pipeline, plus the ones being
+#               loaded, plus one. A new modulus is loaded while the core runs, into the slot unused the longest.
+#               The load of one modulus must fit one polynomial time. It is counted under table load below.
+#   "either"    the search tries both
+modulus_slots = "either"
+
+# When the two lines above are false: how many polynomials of one modulus come back to back.
+# Switched off means one modulus for ever, so the cost of a change is not counted.
+# run_length = 1000
+
+output_order = "any"                    # "any" | "natural" (coefficients leave in index order)
+output_backpressure = false             # true: the core must accept a stalled output (out_ready)
+
+
+# ---------------------------------------------------------------------------------------------------------
+[performance]                           # what the core must reach
+# ---------------------------------------------------------------------------------------------------------
+clock_mhz = 350                         # the clock the core must run at
+
+# Throughput. REQUIRED: give at least one of the two. Both count when both are set.
+# The throughput and the clock fix how many butterflies a core needs, so the search sizes every core to this target.
+min_ntt_per_second = 1e5
+# max_cycles_per_ntt = 4096             # cycles from one polynomial to the next in steady state
+
+# Latency, first input to last output of one polynomial. REQUIRED: give at least one of the two.
+# The limit rules out options before anything is priced, and a core that is sized to the throughput and misses
+# it is replaced by the next larger one. If the latency does not matter, give a huge number such as 1e9.
+max_latency_us = 1e9
+# max_latency_cycles = 20000
+
+
+# ---------------------------------------------------------------------------------------------------------
+[resources]                             # the room the NTT core alone may use. REQUIRED: all five.
+# ---------------------------------------------------------------------------------------------------------
+# The numbers below are an example. Put in the room you have.
+
+# The DSP limit is a budget. Every core is built to use it: the DSPs are shared among the multipliers of the
+# core by weight, a core that needs fewer keeps them all, and a multiplier left with no DSP is built from LUTs.
+max_dsp = 1000
+
+# These four are thresholds. A core above any of them is ruled out.
+max_lut = 200_000
+max_ff = 300_000
+max_bram36 = 200
+max_uram = 50
+
+
+# ---------------------------------------------------------------------------------------------------------
+[bandwidth]                             # what the environment around the core can carry. REQUIRED lines marked.
+# ---------------------------------------------------------------------------------------------------------
+# The polynomial itself. Every core takes N coefficients in and gives N out, so the rate follows from the
+# throughput target and is the same for every core. The program prints it and stops if the ports below are
+# too narrow. The widths also bound how many coefficients a core may take per cycle.
+data_in_bits_per_cycle = 256            # REQUIRED. The widest data input the environment can drive.
+data_out_bits_per_cycle = 256           # REQUIRED. The widest data output it can accept.
+
+# Traffic besides the polynomial. This is a real choice between cores: a core may keep its twiddles and tables
+# inside, or take them from outside. false forbids that kind of core. The limits are optional.
+allow_twiddle_stream = true             # REQUIRED. Twiddle factors supplied from outside while the core runs.
+# max_twiddle_stream_bits_per_cycle = 512
+allow_table_load = true                 # REQUIRED. Tables written into the core before it runs, or on a new modulus.
+# max_table_load_bits = 1e7             # bits of one load
+allow_record_stream = true              # REQUIRED. A record (seeds or tables) supplied with each polynomial.
+# max_record_stream_bits_per_cycle = 64
+
+# Tables that a core does not store must be stored outside. That storage is not part of the core's resources,
+# so it is limited here. A huge number such as 1e12 means no limit, 0 means the core must hold everything.
+max_outside_table_bits = 1e12           # REQUIRED.
+
+
+# ---------------------------------------------------------------------------------------------------------
+[search]                                # where to look
+# ---------------------------------------------------------------------------------------------------------
+architectures = ["iterative", "hybrid", "dataflow", "multistep"]
+allow_timing_risk = true                # false: drop cores that carry a timing risk flag
+sizing = "minimal"                      # "minimal": per kind of core, only the smallest size that meets the
+                                        #            requirements. A larger one only adds area.
+                                        # "all": every size that meets them (slower, shows faster cores too)
+
+# Restrict one option of one architecture to the listed values (advanced).
+# "none" in a list stands for an option that is switched off.
+# [search.options.dataflow]
+# constBackend = ["lut", "dsp"]
+# dspFraction = ["none", 0.5]
+
+
+# ---------------------------------------------------------------------------------------------------------
+[run]                                   # how to run the search and where the result goes
+# ---------------------------------------------------------------------------------------------------------
+# Paths are taken from the folder you start the program in.
+# output_folder = "dse_out"             # receives result.json, front.txt and feasible.txt
+show = "front"                          # "front" | "feasible" | "records": the table printed at the end
+# jobs = 16                             # parallel model processes
+# cache = "dse_cache"                   # folder that keeps priced points between runs
+# records = ["old/result.json"]         # filter these saved searches and price nothing
+# limit = 1000                          # at most this many points per architecture
+# sample = 1000                         # the same, drawn at random
+# seed = 1

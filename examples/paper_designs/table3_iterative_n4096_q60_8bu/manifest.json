@@ -1,0 +1,110 @@
+{
+  "top_name": "Ia_n4096_q60w_B8_rns",
+  "n": 4096,
+  "butterflies": 8,
+  "io_lanes": 2,
+  "banks": 32,
+  "bank_depth": 256,
+  "width": 60,
+  "out_width": 60,
+  "bu_latency": 17,
+  "write_latency": 23,
+  "out_latency": 4,
+  "gaps": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "q_ports": [
+    "QH",
+    "QHALF"
+  ],
+  "q_port_widths": [
+    30,
+    60
+  ],
+  "load_words": 0,
+  "tw_width": 0,
+  "dir_port": true,
+  "mem_style": "block",
+  "twiddle_style": "block",
+  "read_sources": [
+    2,
+    8,
+    4,
+    6,
+    4,
+    6,
+    6,
+    4,
+    4,
+    6,
+    6,
+    4,
+    6,
+    4,
+    8,
+    2
+  ],
+  "write_sources": [
+    3,
+    5,
+    7,
+    5,
+    5,
+    7,
+    5,
+    3,
+    3,
+    5,
+    7,
+    5,
+    5,
+    7,
+    5,
+    3
+  ],
+  "twiddle_buffer": "recycle",
+  "tw_lanes": 2,
+  "tw_entry_cols": [
+    60
+  ],
+  "tw_beat_width": 120,
+  "header_beats": 1,
+  "header_layout": [
+    [
+      "QH",
+      1,
+      30
+    ],
+    [
+      "QHALF",
+      31,
+      60
+    ]
+  ],
+  "stage_beats": [
+    4,
+    4,
+    4,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "q_bubble": 19
+}

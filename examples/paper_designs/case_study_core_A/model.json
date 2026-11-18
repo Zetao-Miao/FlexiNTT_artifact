@@ -1,0 +1,12 @@
+{
+ "name": "ms_n65536_p32_16x16x16x16_tw_otf_fri_wlm_slots_rot2_sir_dspt6480_oc2cc7e",
+ "arch": "multistep",
+ "lut": 620358.3,
+ "ff": 1090675.2,
+ "dsp": 6438.0,
+ "bram36": 231.0,
+ "uram": 0.0,
+ "interval": 2048,
+ "latency": 4944,
+ "clockMhz": 400
+}

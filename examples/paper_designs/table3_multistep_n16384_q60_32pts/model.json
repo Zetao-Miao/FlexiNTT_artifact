@@ -1,0 +1,139 @@
+{
+ "row": "MS_N14_q60_P32_tpm",
+ "tpntt": "60 / 2^14 / 32: 311k LUT, 2464 DSP, 69 RAM, 250 MHz, 2.06 us, one reloadable modulus (TP-NTT-matched)",
+ "N": 16384,
+ "sizes": [
+  16,
+  32,
+  32
+ ],
+ "P": 32,
+ "M": 7,
+ "latency": 815,
+ "interval": 512,
+ "total": {
+  "lut": 334054,
+  "dsp": 3864,
+  "bram36": 32.0,
+  "uram": 0,
+  "score": 730054.0
+ },
+ "parts": {
+  "pass0": {
+   "lut": 72704,
+   "dsp": 768,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 63
+  },
+  "pass1": {
+   "lut": 72275,
+   "dsp": 588,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 66
+  },
+  "pass2": {
+   "lut": 91635,
+   "dsp": 972,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 78
+  },
+  "T1": {
+   "lut": 7936,
+   "dsp": 0,
+   "bram36": 32.0,
+   "uram": 0,
+   "source": null,
+   "latency": 517
+  },
+  "T2": {
+   "lut": 12064,
+   "dsp": 0,
+   "bram36": 0.0,
+   "uram": 0,
+   "source": null,
+   "latency": 39
+  },
+  "tw1": {
+   "lut": 38720,
+   "dsp": 768,
+   "bram36": 0,
+   "uram": 0,
+   "source": "otf",
+   "latency": null
+  },
+  "tw2": {
+   "lut": 38720,
+   "dsp": 768,
+   "bram36": 0,
+   "uram": 0,
+   "source": "otf",
+   "latency": null
+  }
+ },
+ "multipliers": {
+  "butterflies": 224,
+  "twiddle": 64,
+  "generators": 64,
+  "subTwist": 32
+ },
+ "sources": {
+  "1": "otf",
+  "2": "otf"
+ },
+ "gen_s": 77,
+ "dirs": [
+  "fwd",
+  "inv",
+  "fwd"
+ ],
+ "gaps": [
+  0,
+  3,
+  0
+ ],
+ "form": "twist",
+ "formDecision": {
+  "pick": {
+   "form": "twist",
+   "source": "otf"
+  },
+  "pickBuildable": {
+   "form": "twist",
+   "source": "otf"
+  },
+  "reason": "least memory 32 BRAM36-eq (tolerance 16): twist/otf, twist/tree; twist/otf has the fewest multipliers (322)",
+  "reasonBuildable": "least memory 32 BRAM36-eq (tolerance 16): twist/otf, twist/tree; twist/otf has the fewest multipliers (322)",
+  "rule": null,
+  "budget": null,
+  "leanDsp": null,
+  "table": "| candidate | multipliers (bu / inter / inv / gen) | DSP | BRAM36 | URAM | BRAM36 + 8 URAM | twiddle words/prime/dir | latency |\n|---|---|---|---|---|---|---|---|\n| twist/rom | 258 (162 / 64 / 32 / 0) | 3096 | 94 | 0 | 94 | 16416 | 791 |\n| twist/otf **(pick)** | 322 (162 / 64 / 32 / 64) | 3864 | 32 | 0 | 32 | 1756 | 815 |\n| twist/tree | 330 (162 / 64 / 32 / 72) | 3960 | 32 | 0 | 32 | 104 | 935 |\n| folded | 256 (224 / 0 / 32 / 0) | 3072 | 158 | 0 | 158 | 32752 | 781 |"
+ },
+ "dspSplit": null,
+ "reloads": [
+  {
+   "q": 1152059487490670593,
+   "cycles": 3671,
+   "words": 3666,
+   "drain": 0
+  },
+  {
+   "q": 1151769216420937729,
+   "cycles": 4486,
+   "words": 3666,
+   "drain": 815
+  },
+  {
+   "q": 1151769216420937729,
+   "cycles": 819,
+   "words": 0,
+   "drain": 815,
+   "dirOnly": true
+  }
+ ]
+}

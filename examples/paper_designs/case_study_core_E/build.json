@@ -1,0 +1,742 @@
+{
+ "top": "ms_n65536_p32_4x16x32x32_tw_otf_fri_wlm_bank_slots_rot2_dspt4536",
+ "tb": "ms_n65536_p32_4x16x32x32_tw_otf_fri_wlm_bank_slots_rot2_dspt4536_tb",
+ "meta": {
+  "top": "ms_n65536_p32_4x16x32x32_tw_otf_fri_wlm_bank_slots_rot2_dspt4536",
+  "latency": 3703,
+  "lanes": 32,
+  "frame": 2048,
+  "test_cycles": 12344,
+  "test_beats": 12288,
+  "slots": 5,
+  "lead": 32,
+  "schedule": [
+   {
+    "kind": "twiddle",
+    "t": 0,
+    "off": 0,
+    "latency": 30
+   },
+   {
+    "kind": "pass",
+    "t": 0,
+    "off": 30,
+    "latency": 33
+   },
+   {
+    "kind": "transpose",
+    "before": 1,
+    "off": 63,
+    "latency": 2051
+   },
+   {
+    "kind": "twiddle",
+    "t": 1,
+    "off": 2114,
+    "latency": 30
+   },
+   {
+    "kind": "pass",
+    "t": 1,
+    "off": 2144,
+    "latency": 93
+   },
+   {
+    "kind": "transpose",
+    "before": 2,
+    "off": 2237,
+    "latency": 1031
+   },
+   {
+    "kind": "twiddle",
+    "t": 2,
+    "off": 3268,
+    "latency": 57
+   },
+   {
+    "kind": "pass",
+    "t": 2,
+    "off": 3325,
+    "latency": 126
+   },
+   {
+    "kind": "transpose",
+    "before": 3,
+    "off": 3451,
+    "latency": 39
+   },
+   {
+    "kind": "twiddle",
+    "t": 3,
+    "off": 3490,
+    "latency": 57
+   },
+   {
+    "kind": "pass",
+    "t": 3,
+    "off": 3547,
+    "latency": 126
+   },
+   {
+    "kind": "twiddle",
+    "t": 4,
+    "off": 3673,
+    "latency": 30
+   }
+  ]
+ },
+ "ports": [
+  {
+   "name": "clk",
+   "dir": "input",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "rst",
+   "dir": "input",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "in_valid",
+   "dir": "input",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "MIDX",
+   "dir": "input",
+   "width": 3,
+   "kind": "record_stream",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "DIR",
+   "dir": "input",
+   "width": 1,
+   "kind": "record_stream",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "mq_QH",
+   "dir": "input",
+   "width": 45,
+   "kind": "record_stream",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "mq_QHALF",
+   "dir": "input",
+   "width": 62,
+   "kind": "record_stream",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "ld_rst",
+   "dir": "input",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "ld_wen",
+   "dir": "input",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "ld_wdata",
+   "dir": "input",
+   "width": 124,
+   "kind": "table_load",
+   "beats": 1807,
+   "perLoad": true
+  },
+  {
+   "name": "ld_slot",
+   "dir": "input",
+   "width": 3,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "ld_dir",
+   "dir": "input",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_0",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_1",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_2",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_3",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_4",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_5",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_6",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_7",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_8",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_9",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_10",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_11",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_12",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_13",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_14",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_15",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_16",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_17",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_18",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_19",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_20",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_21",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_22",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_23",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_24",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_25",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_26",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_27",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_28",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_29",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_30",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "x_in_31",
+   "dir": "input",
+   "width": 62,
+   "kind": "data_in",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "out_valid",
+   "dir": "output",
+   "width": 1,
+   "kind": null,
+   "beats": 0,
+   "perLoad": false
+  },
+  {
+   "name": "midx_out",
+   "dir": "output",
+   "width": 3,
+   "kind": "record_stream",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "dir_out",
+   "dir": "output",
+   "width": 1,
+   "kind": "record_stream",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_0",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_1",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_2",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_3",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_4",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_5",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_6",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_7",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_8",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_9",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_10",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_11",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_12",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_13",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_14",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_15",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_16",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_17",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_18",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_19",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_20",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_21",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_22",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_23",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_24",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_25",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_26",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_27",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_28",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_29",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_30",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  },
+  {
+   "name": "y_out_31",
+   "dir": "output",
+   "width": 62,
+   "kind": "data_out",
+   "beats": 2048,
+   "perLoad": false
+  }
+ ],
+ "polys": 6,
+ "qs": [
+  4611686018017263617,
+  4611686018013069313,
+  4611686018011496449,
+  4611686018007040001,
+  4611686018005204993,
+  4611686018017263617
+ ],
+ "dirs": [
+  "fwd",
+  "inv",
+  "fwd",
+  "inv",
+  "fwd",
+  "inv"
+ ],
+ "reloads": [],
+ "latency": 3703,
+ "F": 2048
+}

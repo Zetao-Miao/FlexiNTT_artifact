@@ -1,0 +1,31 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+| Date         : Wed Nov 18 10:00:28 2026
+| Command      : report_utilization -hierarchical -hierarchical_depth 1 -file utilization_dut.rpt
+| Design       : ev_ld_io4_hweval
+| Device       : xcv80-lsva4737-2MHP-e-S
+| Speed File   : -2MHP
+| Design State : Routed
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------+-----------+------------+------------+---------+------+-------+--------+--------+------+------------+
+|       Instance       |   Module  | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | URAM | DSP Blocks |
++----------------------+-----------+------------+------------+---------+------+-------+--------+--------+------+------------+
+| ev_ld_io4_hweval     |     (top) |      20453 |      17959 |     536 | 1958 | 37161 |     67 |     39 |    0 |        360 |
+|   (ev_ld_io4_hweval) |     (top) |         25 |         25 |       0 |    0 |   301 |      0 |      0 |    0 |          0 |
+|   dut                | ev_ld_io4 |      20419 |      17925 |     536 | 1958 | 36685 |     67 |     39 |    0 |        360 |
+|   u_lfsr             |      LFSR |          9 |          9 |       0 |    0 |   175 |      0 |      0 |    0 |          0 |
++----------------------+-----------+------------+------------+---------+------+-------+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

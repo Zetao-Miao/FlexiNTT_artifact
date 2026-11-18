@@ -1,0 +1,173 @@
+{
+ "row": "MS_N16_q60_P32_tpm",
+ "tpntt": "60 / 2^16 / 32: 361k LUT, 2816 DSP, 1128 RAM, 250 MHz, 8.28 us, one reloadable modulus (TP-NTT-matched)",
+ "N": 65536,
+ "sizes": [
+  4,
+  32,
+  16,
+  32
+ ],
+ "P": 32,
+ "M": 29,
+ "latency": 2889,
+ "interval": 2048,
+ "total": {
+  "lut": 360792,
+  "dsp": 3888,
+  "bram36": 160.0,
+  "uram": 0,
+  "score": 797592.0
+ },
+ "parts": {
+  "pass0": {
+   "lut": 36832,
+   "dsp": 384,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 33
+  },
+  "pass1": {
+   "lut": 72275,
+   "dsp": 588,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 66
+  },
+  "pass2": {
+   "lut": 54854,
+   "dsp": 408,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 51
+  },
+  "pass3": {
+   "lut": 91635,
+   "dsp": 972,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 78
+  },
+  "T1": {
+   "lut": 4096,
+   "dsp": 0,
+   "bram36": 128.0,
+   "uram": 0,
+   "source": null,
+   "latency": 2051
+  },
+  "T2": {
+   "lut": 7936,
+   "dsp": 0,
+   "bram36": 32.0,
+   "uram": 0,
+   "source": null,
+   "latency": 517
+  },
+  "T3": {
+   "lut": 12064,
+   "dsp": 0,
+   "bram36": 0.0,
+   "uram": 0,
+   "source": null,
+   "latency": 39
+  },
+  "tw1": {
+   "lut": 19360,
+   "dsp": 384,
+   "bram36": 0,
+   "uram": 0,
+   "source": "rom",
+   "latency": null
+  },
+  "tw2": {
+   "lut": 21160,
+   "dsp": 384,
+   "bram36": 0,
+   "uram": 0,
+   "source": "rom",
+   "latency": null
+  },
+  "tw3": {
+   "lut": 40580,
+   "dsp": 768,
+   "bram36": 0,
+   "uram": 0,
+   "source": "otf",
+   "latency": null
+  }
+ },
+ "multipliers": {
+  "butterflies": 256,
+  "twiddle": 96,
+  "generators": 32,
+  "subTwist": 32
+ },
+ "sources": {
+  "1": "rom",
+  "2": "rom",
+  "3": "otf"
+ },
+ "gen_s": 293,
+ "dirs": [
+  "fwd",
+  "inv",
+  "fwd"
+ ],
+ "gaps": [
+  0,
+  0,
+  3
+ ],
+ "form": "twist",
+ "formDecision": {
+  "pick": {
+   "form": "twist",
+   "source": [
+    "rom",
+    "rom",
+    "otf"
+   ]
+  },
+  "pickBuildable": {
+   "form": "twist",
+   "source": [
+    "rom",
+    "rom",
+    "otf"
+   ]
+  },
+  "reason": "least memory 160 BRAM36-eq (tolerance 16): twist/['rom', 'rom', 'otf'], twist/otf, twist/tree; twist/['rom', 'rom', 'otf'] has the fewest multipliers (324)",
+  "reasonBuildable": "least memory 160 BRAM36-eq (tolerance 16): twist/['rom', 'rom', 'otf'], twist/otf, twist/tree; twist/['rom', 'rom', 'otf'] has the fewest multipliers (324)",
+  "rule": null,
+  "budget": null,
+  "leanDsp": null,
+  "table": "| candidate | multipliers (bu / inter / inv / gen) | DSP | BRAM36 | URAM | BRAM36 + 8 URAM | twiddle words/prime/dir | latency |\n|---|---|---|---|---|---|---|---|\n| twist/['rom', 'rom', 'otf'] **(pick)** | 324 (164 / 96 / 32 / 32) | 3888 | 160 | 0 | 160 | 5064 | 2889 |\n| twist/rom | 292 (164 / 96 / 32 / 0) | 3504 | 377 | 0 | 377 | 65584 | 2877 |\n| twist/otf | 388 (164 / 96 / 32 / 96) | 4656 | 160 | 0 | 160 | 3484 | 2913 |\n| twist/tree | 402 (164 / 96 / 32 / 110) | 4824 | 160 | 0 | 160 | 176 | 3081 |\n| folded | 288 (256 / 0 / 32 / 0) | 3456 | 601 | 0 | 601 | 131068 | 2855 |"
+ },
+ "dspSplit": null,
+ "reloads": [
+  {
+   "q": 1152059487490670593,
+   "cycles": 10277,
+   "words": 10272,
+   "drain": 0
+  },
+  {
+   "q": 1151769216420937729,
+   "cycles": 13166,
+   "words": 10272,
+   "drain": 2889
+  },
+  {
+   "q": 1151769216420937729,
+   "cycles": 2893,
+   "words": 0,
+   "drain": 2889,
+   "dirOnly": true
+  }
+ ]
+}

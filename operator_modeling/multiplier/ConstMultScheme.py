@@ -1,0 +1,569 @@
+'''Hardware model of a constant multiplier, `P = A * C`.
+
+The counterpart to `ButterflyScheme` for constant multipliers: it propagates an
+`IntType` bound to size the datapath, propagates a value batch to produce
+testbench goldens, decides which of the three hardware implementations the
+constant lands on, and costs the result in LUTs. It does not emit RTL: that is
+`ConstMult`'s job, through the `Operator.emitRtl` template.
+
+How the constant becomes hardware
+---------------------------------
+`C` is decomposed into non-adjacent form, so `A * C` is a signed sum of shifted
+copies of `A`. `C = 2^9 - 2^4 + 1` gives three terms; the hardware adds
+`A << 9`, subtracts `A << 4`, and adds `A`. Each term is one `SliceTerm` — the
+whole of `A`, no inner slicing, with the NAF exponent in `limbShift` and the NAF
+sign in `sign` — which is the same record the butterfly emits, so both operators
+feed the same bit-heap builder.
+
+When a `modulus` is supplied, `C` is first replaced by a congruent value with a
+sparser NAF. That lifted value is what the hardware actually multiplies by, and
+therefore what every bound, width and golden here is computed from.
+
+Which implementation gets used is not a free choice: it follows from the bit
+heap's tallest column, exactly as in `rtl_gen/const_mult.py`. One bit per column
+is pure wiring, two is a plain adder, three or more needs a compressor tree. The
+Baugh-Wooley correction bits that signed inputs and negative terms introduce
+count toward that height, which is why a two-term constant can still land on the
+compressor path.
+'''
+from __future__ import annotations
+
+import os as _os
+import random as _random
+import sys as _sys
+
+from ..core.HeapAnalysis import HeapAnalysisCache
+from ..core.IntType import IntType
+from ..core.OperatorScheme import OperatorScheme, readHexBatch
+from ..core.terms import sumTermsBound, sumTermsValue
+from ..core.utils import formatNafExpr, nafTerms, nafTermsModulusLift
+
+_versalArithDir = _os.path.normpath(
+    _os.path.join(_os.path.dirname(__file__), '..', '..', 'versal_arith'))
+if _versalArithDir not in _sys.path:
+    _sys.path.append(_versalArithDir)
+from butterfly_spec import SliceTerm            # noqa: E402
+from const_mult_spec import ConstMultOperatorSpec  # noqa: E402
+
+
+# Bit-heap analysis is memoised: a bank of 64 twiddles reuses constant shapes
+# heavily and `compressAll` deep-copies its heap, so repeating it per entry is the
+# dominant cost of costing a bank. This family's own table — see core.HeapAnalysis
+# on why each family gets one rather than sharing one keyed on terminalLayers.
+_CONST_MULT_HEAPS = HeapAnalysisCache(terminalLayers=1, label='constMult')
+
+
+def defaultModuleName(aInBitWidth: int, constant: int) -> str:
+    '''`Cmult_<width>x<constant>`, negatives rendered as `neg<abs>`.
+
+    Matches `rtl_gen/const_mult.py::_module_name` so a model-generated module
+    and a legacy CLI-generated one for the same parameters collide by name
+    rather than silently coexisting as two different implementations.
+    '''
+    suffix = f'{constant}' if constant >= 0 else f'neg{abs(constant)}'
+    return f'Cmult_{aInBitWidth}x{suffix}'
+
+
+class ConstMultScheme(OperatorScheme):
+    '''Base for constant-multiplier models. One input, one output.'''
+
+    _BOUND_ATTRS = ('aIn',)
+    _VALUE_ATTRS = ('aInValues',)
+
+    def __init__(self, name: str = 'Undefined ConstMult Scheme',
+                 aIn: IntType = IntType(0, 0, 0),
+                 aInValues: list[int] | None = None,
+                 inPortName: str = 'A',
+                 outPortName: str = 'P'):
+        super().__init__(name)
+        self.aIn: IntType = aIn
+        self.aInValues: list[int] | None = aInValues
+        self.inPortName: str = inPortName
+        self.outPortName: str = outPortName
+
+
+class NafConstMult(ConstMultScheme):
+    '''`P = A * C`, with `C` realised as a NAF sum of shifted copies of `A`.'''
+
+    def __init__(self,
+                 name: str = 'Undefined NafConstMult',
+                 constant: int | list[tuple[int, int]] = 0,
+                 aIn: IntType = IntType(0, 0, 0),
+                 aInValues: list[int] | None = None,
+                 modulus: int | None = None,
+                 liftMaxPower: int = 96,
+                 liftMaxTerms: int = 3,
+                 liftMaxMultipleOfModulus: int = 2 ** 32,
+                 liftSearchDepth: int = 3,
+                 liftBeamWidth: int = 200,
+                 inPortName: str = 'A',
+                 outPortName: str = 'P',
+                 countInverters: bool = True,
+                 verbose: bool = False,
+                 targetFmaxMhz: float | None = None):
+        super().__init__(name, aIn, aInValues, inPortName, outPortName)
+        self.constant = constant
+        #: Frequency in, cycles out: when set, the compressor takes the fewest
+        #: stages that reach it (see `pipelineStages`), and an adder or wire
+        #: strategy must reach it as it is, since neither has a register to add.
+        self.targetFmaxMhz = targetFmaxMhz
+        self.modulus = modulus
+        self.liftMaxPower = liftMaxPower
+        self.liftMaxTerms = liftMaxTerms
+        self.liftMaxMultipleOfModulus = liftMaxMultipleOfModulus
+        self.liftSearchDepth = liftSearchDepth
+        self.liftBeamWidth = liftBeamWidth
+        self.countInverters = countInverters
+        self.verbose = verbose
+        # `_liftConstant` is called by _buildTerms, propagateBound, strategy,
+        # areaCost and getOperatorInterface. With a modulus set each call is a
+        # fresh beam search, so a 64-entry bank would repeat it hundreds of
+        # times. Memoise per instance; invalidated by `setConstant`.
+        self._liftCache: tuple[int, list[tuple[int, int]]] | None = None
+
+    # ------------------------------------------------------------------
+    # The constant
+    # ------------------------------------------------------------------
+
+    def _liftConstant(self) -> tuple[int, list[tuple[int, int]]]:
+        '''Resolve `self.constant` to `(implementedValue, nafTerms)`.
+
+        Three input forms, mirroring `GoldilocksSlice64._liftTwiddle`:
+
+          - a pre-lifted NAF list passes straight through;
+          - an `int` with no modulus is decomposed as-is;
+          - an `int` with a modulus is replaced by the congruent value with the
+            sparsest NAF found, which is what the hardware then implements.
+
+        Always uses `operator_modeling.core.utils.nafTermsModulusLift` — the exact
+        target-first search with a beam fallback — never
+        `versal_arith.power_writer.reduce_mod_q_min_powers_lift`. The result is
+        baked into the spec, so the generator never lifts anything itself.
+
+        Memoised: with a modulus set this runs a search, and the callers around
+        it (terms, bound, strategy, area, spec) would otherwise repeat it.
+        '''
+        if self._liftCache is not None:
+            return self._liftCache
+        self._liftCache = self._computeLift()
+        return self._liftCache
+
+    def setConstant(self, constant: int | list[tuple[int, int]]) -> None:
+        '''Replace the constant, discarding the memoised lift.'''
+        self.constant = constant
+        self._liftCache = None
+
+    def _computeLift(self) -> tuple[int, list[tuple[int, int]]]:
+        if isinstance(self.constant, list):
+            naf = [tuple(t) for t in self.constant]
+            for t in naf:
+                if len(t) != 2 or t[0] not in (1, -1):
+                    raise ValueError(
+                        f'{self.name}: NAF terms must be (sign, exponent) with '
+                        f'sign in (+1, -1), got {t!r}'
+                    )
+            value = sum(s * (1 << k) for s, k in naf)
+            return value, naf
+
+        if not isinstance(self.constant, int):
+            raise TypeError(
+                f'{self.name}: constant must be an int or a NAF list, got '
+                f'{type(self.constant).__name__}'
+            )
+
+        if self.modulus is None:
+            naf = nafTerms(self.constant)
+            if self.verbose:
+                print(f'[{self.name}] C = {self.constant} = {formatNafExpr(naf)} '
+                      f'({len(naf)} terms, no lift)')
+            return self.constant, naf
+
+        lifted, naf, count, maxPow = nafTermsModulusLift(
+            x=self.constant,
+            modulus=self.modulus,
+            maxPower=self.liftMaxPower,
+            maxMultipleOfModulus=self.liftMaxMultipleOfModulus,
+            maxSearchDepth=self.liftSearchDepth,
+            beamWidth=self.liftBeamWidth,
+            maxNumberOfTerms=self.liftMaxTerms,
+        )
+        if self.verbose:
+            original = len(nafTerms(self.constant))
+            print(f'[{self.name}] C = {self.constant} -> {lifted} '
+                  f'(mod {self.modulus}); NAF {original} -> {count} terms, '
+                  f'maxPow {maxPow}: {formatNafExpr(naf)}')
+        return lifted, naf
+
+    def _buildTerms(self) -> tuple[list[SliceTerm], int, list[tuple[int, int]]]:
+        '''`(pOutTerms, implementedConstant, naf)` — the one place terms are built.
+
+        `propagateValue`, `getOperatorInterface`, `strategy` and `areaCost` all
+        consume this, so none of them can disagree about what the hardware sums.
+
+        Each NAF term takes the whole of `A`: `sliceStart = 0`,
+        `sliceEnd = aInBitWidth - 1`. That is a full-width slice, so
+        `IntType.slice` returns the input unchanged and `isSigned` follows the
+        input's own signedness — which is what tells the heap builder whether to
+        sign-extend the term up to the output width.
+        '''
+        if not isinstance(self.aIn, IntType):
+            raise TypeError(
+                f'{self.name}._buildTerms: aIn must be an IntType, got '
+                f'{type(self.aIn).__name__}'
+            )
+        lifted, naf = self._liftConstant()
+        if not naf:
+            raise ValueError(
+                f'{self.name}: constant {self.constant} has 0 NAF terms '
+                f'(C = 0 is not a multiplier)'
+            )
+        if self.aIn.isZero:
+            raise ValueError(
+                f'{self.name}: aIn bound is zero — set an input bound before '
+                f'building terms'
+            )
+
+        width = self.aIn.bitWidth
+        terms = [
+            SliceTerm(
+                source=self.inPortName,
+                inputShift=0,
+                sliceStart=0,
+                sliceEnd=width - 1,
+                isSigned=self.aIn.isSigned,
+                limbShift=exponent,
+                sign=sign,
+                constValue=0,
+            )
+            for sign, exponent in naf
+        ]
+        return terms, lifted, naf
+
+    # ------------------------------------------------------------------
+    # Bound and value paths
+    # ------------------------------------------------------------------
+
+    def propagateBound(self) -> IntType:
+        '''Exact interval of `A * C`.
+
+        Note this is the product bound, **not** `sumTermsBound(terms)`. The NAF
+        terms are correlated copies of one input, so interval arithmetic over
+        them over-approximates badly: for `C = 3` it evaluates `4*aIn - aIn` and
+        yields roughly five times the reachable range. The reachable set is
+        exactly the product, and the datapath should be sized for that.
+
+        The term sum is still a valid *upper* bound on what the bit heap can
+        represent, which `checkTermContainment` asserts.
+        '''
+        super().propagateBound()
+        lifted, _ = self._liftConstant()
+        return IntType.fromConst(lifted) * self.aIn
+
+    def propagateValue(self) -> list[int]:
+        '''Unreduced `A * C` for the loaded input batch.
+
+        Evaluated through the same term list the hardware is built from rather
+        than as a plain multiply, so a mistake in the terms shows up here as a
+        golden mismatch instead of hiding until simulation.
+        '''
+        super().propagateValue()
+        terms, _, _ = self._buildTerms()
+        return sumTermsValue(terms, {self.inPortName: self.aInValues},
+                             len(self.aInValues))
+
+    def checkTermContainment(self) -> None:
+        '''Assert the bit heap can represent every value the product can take.
+
+        The heap may be wider than the semantics (correlated terms), never
+        narrower. A violation would mean the emitted hardware cannot hold a
+        result the model considers reachable.
+        '''
+        terms, _, _ = self._buildTerms()
+        heapBound = sumTermsBound(terms, {self.inPortName: self.aIn})
+        exact = self.propagateBound()
+        if heapBound.minValue > exact.minValue or heapBound.maxValue < exact.maxValue:
+            raise AssertionError(
+                f'{self.name}: bit-heap bound {heapBound} does not contain the '
+                f'product bound {exact}'
+            )
+
+    def checkHeapArithmetic(self, testSize: int = 64,
+                            seed: int | None = None) -> None:
+        '''Check the bit heap itself computes `A * C`, without a simulator.
+
+        `propagateValue` and the local testvector sanity check both run through
+        the term list, so they agree with each other by construction and cannot
+        catch a mistake in how terms become heap bits. This interprets the heap
+        descriptor the RTL is literally wired from — every bit is `A[i]`,
+        `~A[i]`, `1'b1` or `1'b0`, weighted by its column — and confirms the sum
+        equals `A * C` modulo the output width.
+
+        That covers the Baugh-Wooley correction bits, which is where signed
+        inputs and negative constants are easy to get wrong, and it is the
+        strongest statement available about the emitted hardware short of
+        running a simulation.
+        '''
+        from rtl_gen.heap_terms import buildHeapDescriptors
+
+        rng = _random.Random(seed) if seed is not None else _random
+        lifted, _ = self._liftConstant()
+        outWidth = self.propagateBound().bitWidth
+        terms, _, _ = self._buildTerms()
+        _, assignDesc, _, _ = buildHeapDescriptors(terms, outWidth,
+                                                   f'{self.outPortName.lower()}_')
+
+        aWidth = self.aIn.bitWidth
+        aMask = (1 << aWidth) - 1
+        outMask = (1 << outWidth) - 1
+
+        for _ in range(testSize):
+            value = rng.randint(self.aIn.minValue, self.aIn.maxValue)
+            raw = value & aMask
+            total = 0
+            for entry in assignDesc:
+                column = entry[0]
+                for sigName, sigIndex, negated, isConst in entry[1:]:
+                    if isConst:
+                        bit = 1
+                    elif sigName is None:
+                        bit = 0
+                    else:
+                        index = sigIndex if sigIndex not in (None, -1) else 0
+                        bit = (raw >> index) & 1
+                        if negated:
+                            bit ^= 1
+                    total += bit << column
+            expected = (value * lifted) & outMask
+            if (total & outMask) != expected:
+                raise AssertionError(
+                    f'{self.name}: bit heap computes {total & outMask:#x} for '
+                    f'A={value}, expected {expected:#x} '
+                    f'(= {value} * {lifted} mod 2^{outWidth})'
+                )
+
+    # ------------------------------------------------------------------
+    # Implementation strategy, latency and area
+    # ------------------------------------------------------------------
+
+    def _heapDescriptors(self):
+        '''`(compressor_desc, assign_desc, bitheap_list, width_bh)` for the output.'''
+        from rtl_gen.heap_terms import buildHeapDescriptors
+
+        terms, _, _ = self._buildTerms()
+        outWidth = self.propagateBound().bitWidth
+        return buildHeapDescriptors(terms, outWidth, f'{self.outPortName.lower()}_')
+
+    def maxColumnHeight(self) -> int:
+        '''Tallest bit-heap column, including Baugh-Wooley correction bits.'''
+        _, assign_desc, _, _ = self._heapDescriptors()
+        if not assign_desc:
+            return 0
+        return max(len(entry) - 1 for entry in assign_desc)
+
+    def strategy(self) -> str:
+        '''`'wire'`, `'adder'` or `'compressor'`.
+
+        The same dispatch `rtl_gen/const_mult.py` performs, but decided once —
+        here — and recorded in the spec, so the generator never re-derives it.
+        '''
+        height = self.maxColumnHeight()
+        if height <= 1:
+            return 'wire'
+        if height == 2:
+            return 'adder'
+        return 'compressor'
+
+    def _analyseHeap(self):
+        '''`(nLayers, layerList, finalHeights)`, memoised across identical heaps.'''
+        _, _, bitheap_list, width_bh = self._heapDescriptors()
+        return _CONST_MULT_HEAPS.analyse(bitheap_list, width_bh)
+
+    def units(self) -> tuple:
+        '''The register boundaries of this multiplier's hardware, as
+        `lut_timing.Unit`s -- the table the generator places registers with.
+        Wiring has none; the adder strategy is one unit; the compressor is one
+        per compression layer plus the terminal adder.'''
+        from lut_timing import adder_units, heap_units
+
+        strategy = self.strategy()
+        if strategy == 'wire':
+            return ()
+        if strategy == 'adder':
+            return adder_units(self.propagateBound().bitWidth)
+        _, _, bitheapList, _ = self._heapDescriptors()
+        return heap_units(bitheapList)
+
+    def pipelineStages(self, requested: int = 1) -> int:
+        '''Stages the compressor takes: `requested`, or with `targetFmaxMhz`
+        the fewest that reach the target. Wiring and adder strategies are
+        combinational and return 0; with a target, an adder that cannot reach
+        it in its single stage raises, because nothing can be added to it.'''
+        if requested < 0:
+            raise ValueError(f'{self.name}: pipelineStages must be >= 0, got {requested}')
+        strategy = self.strategy()
+        if strategy == 'wire':
+            return 0
+        if self.targetFmaxMhz is None:
+            return 0 if strategy == 'adder' else requested
+        from lut_timing import stages_for_fmax
+        stages = stages_for_fmax(self.units(), self.targetFmaxMhz, label=self.name)
+        return 0 if strategy == 'adder' else stages
+
+    def registerFlags(self, pipelineStages: int = 1) -> list[bool]:
+        '''Where the compressor's registers sit, one flag per unit; empty for
+        the combinational strategies. `pipelineStages()` runs first for every
+        strategy, so an adder that cannot reach `targetFmaxMhz` raises here
+        too -- and therefore from `latency()`, a bank's `perEntryLatency` and
+        its spec, not only from a single operator's `emitRtl` (found by
+        review, Sept 2026).'''
+        stages = self.pipelineStages(pipelineStages)
+        if self.strategy() != 'compressor':
+            return []
+        from lut_timing import place_registers, weights
+        return place_registers(weights(self.units()), stages)
+
+    def latency(self, pipelineStages: int = 1) -> int:
+        '''Pipeline registers this multiplier contributes.
+
+        Wiring and adder strategies are combinational, so they contribute zero
+        and get balancing registers when placed in a bank. The compressor
+        strategy absorbs at most one register per unit (compression layers plus
+        the terminal adder), so requesting more stages than that clamps -- the
+        generator places exactly these flags. `0` is a combinational compressor.
+        '''
+        return sum(self.registerFlags(pipelineStages))
+
+    def criticalPathNs(self, pipelineStages: int = 1) -> float:
+        '''Predicted slowest register-to-register segment, clock uncertainty
+        excluded; 0.0 for pure wiring.'''
+        from lut_timing import segment_ns, weights
+        units = self.units()
+        if not units:
+            return 0.0
+        flags = self.registerFlags(pipelineStages) or [False] * len(units)
+        return segment_ns(weights(units), flags)
+
+    def achievedFmaxMhz(self, pipelineStages: int = 1) -> float:
+        from lut_timing import fmax_of
+        return fmax_of(self.criticalPathNs(pipelineStages))
+
+    def areaCost(self) -> tuple[int, int]:
+        '''`(LUT, 0)` — nothing in this operator uses a DSP.
+
+        Wiring costs whatever inverters it cannot give away. A negative NAF term
+        emits `~A[i]`, which is free only if some downstream LUT absorbs it; in a
+        bank the output goes to a balancing register or straight to a port, so
+        there is nothing to absorb it. `countInverters=False` opts out when the
+        caller knows the consumer will fuse them.
+
+        Adder costs one LUT and carry per column. Compressor costs the exact
+        per-GPC sum from the placement heuristic plus the quaternary terminal
+        adder.
+        '''
+        from rtl_gen.heap_terms import heapLutCost
+
+        strategy = self.strategy()
+        _, assign_desc, _, _ = self._heapDescriptors()
+
+        if strategy == 'wire':
+            if not self.countInverters:
+                return 0, 0
+            inverted = sum(
+                1
+                for entry in assign_desc
+                for bit in entry[1:]
+                if bit[2]  # the `neg` flag
+            )
+            return inverted, 0
+
+        if strategy == 'adder':
+            return len(assign_desc), 0
+
+        _, layerList, finalHeights = self._analyseHeap()
+        return heapLutCost(layerList, finalHeights), 0
+
+    # ------------------------------------------------------------------
+    # Spec extraction
+    # ------------------------------------------------------------------
+
+    def getOperatorInterface(self, name: str) -> ConstMultOperatorSpec:
+        '''Frozen spec for the RTL generator. Requires `aIn` to be set.'''
+        if not isinstance(self.aIn, IntType):
+            raise TypeError(
+                f'{self.name}.getOperatorInterface: aIn must be an IntType, got '
+                f'{type(self.aIn).__name__}'
+            )
+        terms, lifted, naf = self._buildTerms()
+        outBound = self.propagateBound()
+        original = self.constant if (self.modulus is not None
+                                     and isinstance(self.constant, int)) else None
+
+        return ConstMultOperatorSpec(
+            name=name,
+            constant=lifted,
+            originalConstant=original,
+            modulus=self.modulus,
+            naf=naf,
+            inPortName=self.inPortName,
+            outPortName=self.outPortName,
+            aInBitWidth=self.aIn.bitWidth,
+            aInIsSigned=self.aIn.isSigned,
+            aInZeroLsbs=self.aIn.zeroLsbs,
+            pOutBitWidth=outBound.bitWidth,
+            pOutIsSigned=outBound.isSigned,
+            pOutMinValue=outBound.minValue,
+            pOutMaxValue=outBound.maxValue,
+            pOutZeroLsbs=outBound.zeroLsbs,
+            strategy=self.strategy(),
+            maxColumnHeight=self.maxColumnHeight(),
+            pOutTerms=terms,
+        )
+
+
+
+def sanityCheckConstMultTestvectors(run_dir, spec: ConstMultOperatorSpec,
+                                    sampleSize: int = 8) -> None:
+    '''Re-derive the on-disk goldens from the on-disk inputs, and compare.
+
+    Reads back what was actually written, decodes it at the spec's declared
+    widths, pushes it through `propagateValue` again, and checks the result
+    matches modulo `2^pOutBitWidth`. Catches two's-complement encoding mistakes
+    locally, before a simulation is scheduled on the remote server.
+    '''
+    from pathlib import Path
+
+    run_dir = Path(run_dir)
+    tvDir = run_dir / 'testvectors'
+    aVals = readHexBatch(tvDir / f'{spec.inPortName}.txt', sampleSize,
+                         spec.aInBitWidth, spec.aInIsSigned)
+    pVals = readHexBatch(tvDir / f'{spec.outPortName}.txt', len(aVals),
+                         spec.pOutBitWidth, False)
+
+    # Rebuild from the DECLARED register rather than the modelled interval: the
+    # terms only need the right slice width and signedness to reproduce what the
+    # RTL computes, and the register is what the RTL port actually is.
+    aInRegister = (IntType.signed(spec.aInBitWidth) if spec.aInIsSigned
+                   else IntType.unsigned(spec.aInBitWidth))
+    model = NafConstMult(name=f'{spec.name}_sanity', constant=spec.naf,
+                         aIn=aInRegister, aInValues=aVals,
+                         inPortName=spec.inPortName,
+                         outPortName=spec.outPortName)
+    expected = model.propagateValue()
+
+    mask = (1 << spec.pOutBitWidth) - 1
+    mismatches = [
+        (i, aVals[i], expected[i] & mask, pVals[i])
+        for i in range(len(pVals))
+        if (expected[i] & mask) != (pVals[i] & mask)
+    ]
+    if mismatches:
+        lines = '\n'.join(
+            f'    [{i}] A={a} expected={e:#x} onDisk={d:#x}'
+            for i, a, e, d in mismatches[:5]
+        )
+        raise RuntimeError(
+            f'{spec.name}: {len(mismatches)}/{len(pVals)} testvectors disagree '
+            f'with propagateValue — likely a twos-complement encoding bug\n{lines}'
+        )
+    print(f'[emitRtl] sanity-check OK: {len(pVals)} testvectors round-trip '
+          f'through propagateValue')

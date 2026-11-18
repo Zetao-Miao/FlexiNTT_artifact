@@ -1,0 +1,153 @@
+{
+ "arch": "multistep",
+ "name": "ms_n65536_p32_16x16x16x16_tw_tree_fri_wlm_slots_rot1_sir_dspt6480",
+ "params": {
+  "form": "twist",
+  "twists": "merged",
+  "twiddleSource": "tree",
+  "tableSupply": "core",
+  "loadable": false,
+  "subInputRegister": true,
+  "slotMode": "rotate",
+  "loadLanes": 1,
+  "modulus": "friendly",
+  "reduction": "wlm",
+  "unified": false,
+  "inverseScale": "stage",
+  "outputOrder": "pass",
+  "inputLayout": "block",
+  "outReady": false,
+  "outFifoDepth": null,
+  "dspFraction": null,
+  "dspTotal": 6480,
+  "memStyle": "auto",
+  "swapPolicy": "recent",
+  "portAlign": "data",
+  "ramLatency": 2,
+  "crossRegs": 0,
+  "crossAt": "all",
+  "tableShare": 8,
+  "romStyleMaxDepth": 64,
+  "transpose": "bmb",
+  "direction": "both",
+  "loadMod": true,
+  "lanes": 32,
+  "sizes": [
+   16,
+   16,
+   16,
+   16
+  ],
+  "loadByDir": true,
+  "req": {
+   "n": 65536,
+   "moduli": [],
+   "qBits": 62,
+   "M": 64,
+   "form": {
+    "kind": "ntt"
+   },
+   "negacyclic": true,
+   "direction": "both",
+   "clockMhz": 400,
+   "slotsK": 5
+  },
+  "peakBits": 4150
+ },
+ "clockMhz": 400,
+ "lut": 664178.6,
+ "ff": 1164768.2,
+ "dsp": 6478.0,
+ "bram36": 299.0,
+ "uram": 0.0,
+ "interval": 2048,
+ "latency": 5259,
+ "reloadCycles": 0,
+ "ports": [
+  {
+   "kind": "record_stream",
+   "widthBits": 8,
+   "count": 1,
+   "beatsPerNtt": 1.0,
+   "perLoad": false,
+   "name": "ann_key"
+  },
+  {
+   "kind": "record_stream",
+   "widthBits": 1,
+   "count": 1,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "DIR"
+  },
+  {
+   "kind": "record_stream",
+   "widthBits": 45,
+   "count": 1,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "mq_QH"
+  },
+  {
+   "kind": "record_stream",
+   "widthBits": 62,
+   "count": 1,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "mq_QHALF"
+  },
+  {
+   "kind": "table_load",
+   "widthBits": 62,
+   "count": 1,
+   "beatsPerNtt": 303.0,
+   "perLoad": false,
+   "name": "ld_wdata"
+  },
+  {
+   "kind": "data_in",
+   "widthBits": 62,
+   "count": 32,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "x_in_"
+  },
+  {
+   "kind": "record_stream",
+   "widthBits": 3,
+   "count": 1,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "midx_out"
+  },
+  {
+   "kind": "record_stream",
+   "widthBits": 1,
+   "count": 1,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "dir_out"
+  },
+  {
+   "kind": "data_out",
+   "widthBits": 62,
+   "count": 32,
+   "beatsPerNtt": 2048.0,
+   "perLoad": false,
+   "name": "y_out_"
+  }
+ ],
+ "twiddleWordsInside": 1515,
+ "twiddleWordsOutside": 606,
+ "perPolyModulus": true,
+ "perPolyDirection": true,
+ "lanes": 32,
+ "butterflies": 256,
+ "flags": [
+  "model: with a DSP budget the routed LUT count was up to 10 % and the FF count up to 28 % above the model (area units up to 4.3 %)",
+  "slots rotate: 5 slots for any sequence of moduli, a load of 303 cycles on 1 lane(s) per new modulus, announced 45 cycles ahead; the manager is priced by a formula"
+ ],
+ "timingMet": null,
+ "modelNote": "MultiStepArea, build-free. Against 51 routed cores at 350 MHz (overnight_2026-11-14/fourstep): full-DSP rows LUT within 4.3 %, FF within 2.9 %, area units within 0.8 %; DSP and URAM exact, BRAM36 exact on 48 of 51. Interval and pipeline latency are exact (xsim checks every beat at its cycle). Sub-NTT twiddle constants are counted by a formula ((n - 1) per pass, direction and resident modulus).",
+ "measured": {}
+}

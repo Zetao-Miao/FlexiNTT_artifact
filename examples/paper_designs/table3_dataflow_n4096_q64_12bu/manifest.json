@@ -1,0 +1,229 @@
+{
+  "top_name": "LDc_rom1",
+  "n": 4096,
+  "lanes": 2,
+  "frame_cycles": 2048,
+  "latency": 2273,
+  "modules": [
+    "LDc_rom1_s0_c0",
+    "LDc_rom1_s10_bu",
+    "LDc_rom1_s11_bu",
+    "LDc_rom1_s1_bu",
+    "LDc_rom1_s2_bu",
+    "LDc_rom1_s3_bu",
+    "LDc_rom1_s4_bu",
+    "LDc_rom1_s5_bu",
+    "LDc_rom1_s6_bu",
+    "LDc_rom1_s7_bu",
+    "LDc_rom1_s8_bu",
+    "LDc_rom1_s9_bu"
+  ],
+  "tables": 11,
+  "load_words": 8188,
+  "q_ports": [
+    "QH",
+    "QHALF"
+  ],
+  "q_port_widths": [
+    32,
+    64
+  ],
+  "in_width": 64,
+  "out_width": 64,
+  "dir_port": true,
+  "tw_width": 64,
+  "test_cycles": 6144,
+  "load_lanes": 1,
+  "load_by_dir": false,
+  "stream_classes": 0,
+  "stream_width": 0,
+  "stages": [
+    {
+      "exchange": null,
+      "buLatency": 3
+    },
+    {
+      "exchange": [
+        0,
+        0,
+        1
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        1,
+        2
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        2,
+        4
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        3,
+        8
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        4,
+        16
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        5,
+        32
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        6,
+        64
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        7,
+        128
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        8,
+        256
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        9,
+        512
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        10,
+        1024
+      ],
+      "buLatency": 19
+    }
+  ],
+  "moduli": 1,
+  "modulus_index_bits": 1,
+  "lead": 2,
+  "per_frame_dir": true,
+  "loadable_moduli": true,
+  "slot_tables": [
+    {
+      "id": 0,
+      "base": 0,
+      "words": 4,
+      "offsets": [
+        5
+      ]
+    },
+    {
+      "id": 1,
+      "base": 4,
+      "words": 8,
+      "offsets": [
+        27
+      ]
+    },
+    {
+      "id": 2,
+      "base": 12,
+      "words": 16,
+      "offsets": [
+        51
+      ]
+    },
+    {
+      "id": 3,
+      "base": 28,
+      "words": 32,
+      "offsets": [
+        79
+      ]
+    },
+    {
+      "id": 4,
+      "base": 60,
+      "words": 64,
+      "offsets": [
+        115
+      ]
+    },
+    {
+      "id": 5,
+      "base": 124,
+      "words": 128,
+      "offsets": [
+        167
+      ]
+    },
+    {
+      "id": 6,
+      "base": 252,
+      "words": 256,
+      "offsets": [
+        251
+      ]
+    },
+    {
+      "id": 7,
+      "base": 508,
+      "words": 512,
+      "offsets": [
+        399
+      ]
+    },
+    {
+      "id": 8,
+      "base": 1020,
+      "words": 1024,
+      "offsets": [
+        675
+      ]
+    },
+    {
+      "id": 9,
+      "base": 2044,
+      "words": 2048,
+      "offsets": [
+        1207
+      ]
+    },
+    {
+      "id": 10,
+      "base": 4092,
+      "words": 4096,
+      "offsets": [
+        2251
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+ "top_name": "ms_n65536_p32_4x16x32x32_tw_otf_fri_wlm_bank_slots_rot2_dspt4536",
+ "kind": "multistep",
+ "N": 65536,
+ "sizes": [
+  4,
+  16,
+  32,
+  32
+ ],
+ "lanes": 32,
+ "frame_cycles": 2048,
+ "latency": 3703,
+ "moduli": 5,
+ "io_lanes": 32,
+ "cross_regs": 0,
+ "ram_latency": 3,
+ "table_supply": "core",
+ "out_ready": false,
+ "output_order": "pass",
+ "stream_ports": 0
+}

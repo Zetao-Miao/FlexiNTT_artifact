@@ -1,0 +1,1321 @@
+{
+ "what": "Multi-step NTT, out-of-context place and route (V80, Vivado 2025.1, 350 MHz, NTT core alone): routed against the area model (MultiStepArea). LUT = LUT sites (logic + shift registers + LUT RAM).",
+ "sources": {
+  "ms": "../ntt_hw/experiments/fourstep/ms",
+  "opt": "../ntt_hw/experiments/overnight_2026-11-14/fourstep/ooc"
+ },
+ "excluded": {
+  "MS_N10_q32_P32_tpm": "same design as MS_N10_q32_P32_tpmf",
+  "MS_N12_q60_P32": "checkpoint in the slot is not certainly this row (the uram512 build used the same slot)",
+  "MS_N16_q60_P32_tpm": "today's automatic choice is another design than the one built (built: latency 2909, DSP 4656; today: latency 2885, DSP 3888)",
+  "MS_N16_q60_P32_tpm60": "today's automatic choice is another design than the one built (built: DSP 2782; today: DSP 2332)",
+  "MS_N16_q60_P32_tpm80": "today's automatic choice is another design than the one built (built: latency 2915, DSP 3364; today: latency 2890, DSP 2788)"
+ },
+ "bounds": {
+  "heldout": {
+   "lut": 1.5,
+   "ff": 3.0,
+   "au": 0.5
+  },
+  "full": {
+   "lut": 4.5,
+   "ff": 3.0,
+   "au": 1.0
+  },
+  "budget": {
+   "lut": 10.0,
+   "ff": 28.5,
+   "au": 4.5
+  },
+  "oldrtl": {
+   "lut": 3.5,
+   "ff": 2.5,
+   "au": 1.5
+  },
+  "option": {
+   "lut": 7.5,
+   "ff": 3.0,
+   "au": 1.0
+  }
+ },
+ "rows": [
+  {
+   "name": "HO_N10_q60_P32",
+   "group": "heldout",
+   "source": "opt",
+   "measured": {
+    "lut": 196950,
+    "ff": 313669,
+    "dsp": 2316,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 194760,
+    "ff": 311664,
+    "dsp": 2316,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 230430,
+    "dsp": 2316,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "HO_N11_q32_P16",
+   "group": "heldout",
+   "source": "opt",
+   "measured": {
+    "lut": 60659,
+    "ff": 85463,
+    "dsp": 535,
+    "bram36": 16.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 60612,
+    "ff": 87811,
+    "dsp": 535,
+    "bram36": 16.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 73125,
+    "dsp": 535,
+    "bram36": 15.5,
+    "uram": 0
+   }
+  },
+  {
+   "name": "HO_N12_q60_P16_fold",
+   "group": "heldout",
+   "source": "opt",
+   "measured": {
+    "lut": 117874,
+    "ff": 183764,
+    "dsp": 1344,
+    "bram36": 78.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 118281,
+    "ff": 187005,
+    "dsp": 1344,
+    "bram36": 78.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 135764,
+    "dsp": 1344,
+    "bram36": 78.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "HO_N13_q32_P32",
+   "group": "heldout",
+   "source": "opt",
+   "measured": {
+    "lut": 142075,
+    "ff": 197083,
+    "dsp": 1225,
+    "bram36": 78.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 141171,
+    "ff": 201398,
+    "dsp": 1225,
+    "bram36": 78.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 167230,
+    "dsp": 1225,
+    "bram36": 78.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 109310,
+    "ff": 150866,
+    "dsp": 965,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 110246,
+    "ff": 152539,
+    "dsp": 965,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 161643,
+    "dsp": 965,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_auto60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 183301,
+    "ff": 201612,
+    "dsp": 576,
+    "bram36": 8.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 172196,
+    "ff": 198149,
+    "dsp": 576,
+    "bram36": 8.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 222380,
+    "dsp": 576,
+    "bram36": 16.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_auto80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 136129,
+    "ff": 177755,
+    "dsp": 768,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 135300,
+    "ff": 179392,
+    "dsp": 768,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 183212,
+    "dsp": 768,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_fold",
+   "group": "oldrtl",
+   "source": "ms",
+   "measured": {
+    "lut": 111338,
+    "ff": 152758,
+    "dsp": 960,
+    "bram36": 4.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 115172,
+    "ff": 153664,
+    "dsp": 960,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 162092,
+    "dsp": 960,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "memNote": "built before the twiddle tables carried rom_style: Vivado put tables of this build in 4 BRAM36 that today's RTL keeps in LUTs (the model prices today's RTL, so its LUT is higher and its BRAM lower)"
+  },
+  {
+   "name": "MS_N10_q32_P32_tpg80a",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 149710,
+    "ff": 206695,
+    "dsp": 640,
+    "bram36": 17.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 152379,
+    "ff": 212353,
+    "dsp": 640,
+    "bram36": 17.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 187136,
+    "dsp": 640,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_tpg80a_ad",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 146268,
+    "ff": 206447,
+    "dsp": 640,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 146987,
+    "ff": 210161,
+    "dsp": 640,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 187136,
+    "dsp": 640,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_tpgda",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 130051,
+    "ff": 185860,
+    "dsp": 800,
+    "bram36": 17.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 135579,
+    "ff": 190913,
+    "dsp": 800,
+    "bram36": 17.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 169536,
+    "dsp": 800,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_tpgda_ad",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 126001,
+    "ff": 185737,
+    "dsp": 800,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 130187,
+    "ff": 188721,
+    "dsp": 800,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 169536,
+    "dsp": 800,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_tpm60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 185881,
+    "ff": 200526,
+    "dsp": 576,
+    "bram36": 9.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 169266,
+    "ff": 195205,
+    "dsp": 576,
+    "bram36": 9.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 199936,
+    "dsp": 576,
+    "bram36": 16.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_tpm80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 138538,
+    "ff": 173982,
+    "dsp": 768,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 132370,
+    "ff": 177514,
+    "dsp": 768,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 160768,
+    "dsp": 768,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N10_q32_P32_tpmf",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 112379,
+    "ff": 148718,
+    "dsp": 960,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 112242,
+    "ff": 151786,
+    "dsp": 960,
+    "bram36": 1.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 139648,
+    "dsp": 960,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 255789,
+    "ff": 355967,
+    "dsp": 2245,
+    "bram36": 32.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 255344,
+    "ff": 361043,
+    "dsp": 2245,
+    "bram36": 32.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 373834,
+    "dsp": 2245,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64_auto60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 476788,
+    "ff": 528698,
+    "dsp": 1539,
+    "bram36": 0.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 434454,
+    "ff": 514013,
+    "dsp": 1539,
+    "bram36": 0.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 568964,
+    "dsp": 1539,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64_auto80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 348765,
+    "ff": 462842,
+    "dsp": 2052,
+    "bram36": 0.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 334932,
+    "ff": 464217,
+    "dsp": 2052,
+    "bram36": 0.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 464312,
+    "dsp": 2052,
+    "bram36": 0.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64_tpm",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 270295,
+    "ff": 352238,
+    "dsp": 2240,
+    "bram36": 17.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 268655,
+    "ff": 356320,
+    "dsp": 2240,
+    "bram36": 17.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 332736,
+    "dsp": 2240,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64_tpm60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 442711,
+    "ff": 475500,
+    "dsp": 1344,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 401839,
+    "ff": 457933,
+    "dsp": 1344,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 473408,
+    "dsp": 1344,
+    "bram36": 64.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64_tpm80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 330638,
+    "ff": 410139,
+    "dsp": 1792,
+    "bram36": 17.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 315631,
+    "ff": 416352,
+    "dsp": 1792,
+    "bram36": 17.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 382016,
+    "dsp": 1792,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q32_P64_tpmf",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 270295,
+    "ff": 352238,
+    "dsp": 2240,
+    "bram36": 17.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 268655,
+    "ff": 356320,
+    "dsp": 2240,
+    "bram36": 17.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 332736,
+    "dsp": 2240,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_auto60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 523157,
+    "ff": 657455,
+    "dsp": 2135,
+    "bram36": 32.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 479200,
+    "ff": 527291,
+    "dsp": 2135,
+    "bram36": 32.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 616742,
+    "dsp": 2135,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_auto80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 325751,
+    "ff": 439704,
+    "dsp": 2561,
+    "bram36": 32.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 324160,
+    "ff": 314626,
+    "dsp": 2561,
+    "bram36": 32.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 464864,
+    "dsp": 2561,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpg80a",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 337767,
+    "ff": 467399,
+    "dsp": 1696,
+    "bram36": 65.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 341393,
+    "ff": 419631,
+    "dsp": 1696,
+    "bram36": 65.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 422128,
+    "dsp": 1696,
+    "bram36": 64.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpg80a_ad",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 330622,
+    "ff": 466527,
+    "dsp": 1696,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 330585,
+    "ff": 413776,
+    "dsp": 1696,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 422128,
+    "dsp": 1696,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpgda",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 303314,
+    "ff": 467283,
+    "dsp": 2112,
+    "bram36": 65.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 310065,
+    "ff": 480935,
+    "dsp": 2112,
+    "bram36": 65.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 389360,
+    "dsp": 2112,
+    "bram36": 64.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpgda_ad",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 295681,
+    "ff": 466312,
+    "dsp": 2112,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 299257,
+    "ff": 475080,
+    "dsp": 2112,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 389360,
+    "dsp": 2112,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpm",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 260978,
+    "ff": 370714,
+    "dsp": 2688,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 250932,
+    "ff": 378798,
+    "dsp": 2688,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 315632,
+    "dsp": 2688,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpm60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 456870,
+    "ff": 529121,
+    "dsp": 1600,
+    "bram36": 49.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 412086,
+    "ff": 442109,
+    "dsp": 1600,
+    "bram36": 49.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 477264,
+    "dsp": 1600,
+    "bram36": 48.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpm80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 300739,
+    "ff": 354901,
+    "dsp": 1920,
+    "bram36": 49.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 290308,
+    "ff": 270259,
+    "dsp": 1920,
+    "bram36": 49.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 357904,
+    "dsp": 1920,
+    "bram36": 48.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N12_q60_P32_tpmf",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 260978,
+    "ff": 370714,
+    "dsp": 2688,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 250932,
+    "ff": 378798,
+    "dsp": 2688,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 315632,
+    "dsp": 2688,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 299772,
+    "ff": 476008,
+    "dsp": 3528,
+    "bram36": 67.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 297727,
+    "ff": 474550,
+    "dsp": 3528,
+    "bram36": 67.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 438472,
+    "dsp": 3528,
+    "bram36": 34.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32_auto60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 551578,
+    "ff": 675848,
+    "dsp": 2106,
+    "bram36": 69.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 507463,
+    "ff": 550259,
+    "dsp": 2106,
+    "bram36": 69.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 647656,
+    "dsp": 2106,
+    "bram36": 34.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32_auto80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 353912,
+    "ff": 457613,
+    "dsp": 2514,
+    "bram36": 69.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 351602,
+    "ff": 330604,
+    "dsp": 2514,
+    "bram36": 69.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 495112,
+    "dsp": 2514,
+    "bram36": 34.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32_tpm",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 316477,
+    "ff": 503313,
+    "dsp": 3864,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 308213,
+    "ff": 496104,
+    "dsp": 3864,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 402712,
+    "dsp": 3864,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32_tpm60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 590525,
+    "ff": 713678,
+    "dsp": 2318,
+    "bram36": 34.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 531925,
+    "ff": 580796,
+    "dsp": 2318,
+    "bram36": 34.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 626184,
+    "dsp": 2318,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32_tpm80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 382404,
+    "ff": 490829,
+    "dsp": 2770,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 369167,
+    "ff": 364320,
+    "dsp": 2770,
+    "bram36": 33.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 466828,
+    "dsp": 2770,
+    "bram36": 32.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N14_q60_P32_tpmf",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 278293,
+    "ff": 420089,
+    "dsp": 3072,
+    "bram36": 159.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 273220,
+    "ff": 424075,
+    "dsp": 3072,
+    "bram36": 159.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 347200,
+    "dsp": 3072,
+    "bram36": 160.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N16_q60_P32",
+   "group": "oldrtl",
+   "source": "ms",
+   "measured": {
+    "lut": 329941,
+    "ff": 533269,
+    "dsp": 3936,
+    "bram36": 512.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 340087,
+    "ff": 544845,
+    "dsp": 3936,
+    "bram36": 405.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 495604,
+    "dsp": 3936,
+    "bram36": 170.0,
+    "uram": 31
+   },
+   "memNote": "built before the twiddle tables carried rom_style: Vivado put the stage tables inside the passes in 76 BRAM36 and some top tables in BRAM, which today's RTL keeps in LUTs (the model prices today's RTL)"
+  },
+  {
+   "name": "MS_N16_q60_P32_auto60",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 720105,
+    "ff": 903337,
+    "dsp": 2880,
+    "bram36": 267.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 663220,
+    "ff": 732515,
+    "dsp": 2880,
+    "bram36": 267.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 846894,
+    "dsp": 2880,
+    "bram36": 180.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N16_q60_P32_auto80",
+   "group": "budget",
+   "source": "ms",
+   "measured": {
+    "lut": 455420,
+    "ff": 621180,
+    "dsp": 3476,
+    "bram36": 267.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 453188,
+    "ff": 462881,
+    "dsp": 3476,
+    "bram36": 267.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 641626,
+    "dsp": 3476,
+    "bram36": 180.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "MS_N16_q60_P32_tpmf",
+   "group": "full",
+   "source": "ms",
+   "measured": {
+    "lut": 321976,
+    "ff": 480628,
+    "dsp": 3456,
+    "bram36": 587.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 317002,
+    "ff": 489843,
+    "dsp": 3456,
+    "bram36": 587.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 397264,
+    "dsp": 3456,
+    "bram36": 608.0,
+    "uram": 0
+   },
+   "memNote": "the tag delay of 2051 x 1 bit is one RAMB36 in the routed design; a RAMB18 holds it and the model counts 0.5"
+  },
+  {
+   "name": "OB_base",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 132955,
+    "ff": 186661,
+    "dsp": 1165,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 131796,
+    "ff": 190958,
+    "dsp": 1165,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 195555,
+    "dsp": 1165,
+    "bram36": 47.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_cross1",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 132124,
+    "ff": 198334,
+    "dsp": 1165,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 131796,
+    "ff": 201222,
+    "dsp": 1165,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 157394,
+    "dsp": 1165,
+    "bram36": 47.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_natural",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 138288,
+    "ff": 188785,
+    "dsp": 1165,
+    "bram36": 64.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 137120,
+    "ff": 193104,
+    "dsp": 1165,
+    "bram36": 64.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 162770,
+    "dsp": 1165,
+    "bram36": 63.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_ram3",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 132998,
+    "ff": 188585,
+    "dsp": 1165,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 132820,
+    "ff": 192022,
+    "dsp": 1165,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 195555,
+    "dsp": 1165,
+    "bram36": 47.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_ready",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 132747,
+    "ff": 186582,
+    "dsp": 1165,
+    "bram36": 62.0,
+    "uram": 0
+   },
+   "model": {
+    "lut": 131862,
+    "ff": 192067,
+    "dsp": 1165,
+    "bram36": 62.0,
+    "uram": 0
+   },
+   "before": {
+    "lut": 157462,
+    "dsp": 1165,
+    "bram36": 62.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_shoup",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 137766,
+    "ff": 199484,
+    "dsp": 2193,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 132436,
+    "ff": 202592,
+    "dsp": 2193,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 211641,
+    "dsp": 2193,
+    "bram36": 47.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_stream",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 132474,
+    "ff": 185471,
+    "dsp": 1165,
+    "bram36": 16.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 131270,
+    "ff": 190483,
+    "dsp": 1165,
+    "bram36": 16.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 156338,
+    "dsp": 1165,
+    "bram36": 16.0,
+    "uram": 0
+   }
+  },
+  {
+   "name": "OB_unified",
+   "group": "option",
+   "source": "opt",
+   "measured": {
+    "lut": 158183,
+    "ff": 238485,
+    "dsp": 1200,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "model": {
+    "lut": 169424,
+    "ff": 243212,
+    "dsp": 1200,
+    "bram36": 47.5,
+    "uram": 0
+   },
+   "before": {
+    "lut": 243036,
+    "dsp": 1200,
+    "bram36": 47.0,
+    "uram": 0
+   }
+  }
+ ]
+}

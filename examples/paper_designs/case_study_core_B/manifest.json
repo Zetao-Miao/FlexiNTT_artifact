@@ -1,0 +1,22 @@
+{
+ "top_name": "ms_n65536_p32_16x16x16x16_tw_tree_fri_wlm_slots_rot1_sir_dspt6480",
+ "kind": "multistep",
+ "N": 65536,
+ "sizes": [
+  16,
+  16,
+  16,
+  16
+ ],
+ "lanes": 32,
+ "frame_cycles": 2048,
+ "latency": 3215,
+ "moduli": 5,
+ "io_lanes": 32,
+ "cross_regs": 0,
+ "ram_latency": 3,
+ "table_supply": "core",
+ "out_ready": false,
+ "output_order": "pass",
+ "stream_ports": 0
+}

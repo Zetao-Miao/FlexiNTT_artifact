@@ -1,0 +1,48 @@
+{
+ "row": "Ie_n65536_q64b_B64_rns",
+ "io": 8,
+ "n": 65536,
+ "B": 64,
+ "beats": 8192,
+ "polys": 3,
+ "tgt": 350.0,
+ "computeCycles": 8192,
+ "interval": 8211,
+ "latency_one_poly": 24604,
+ "latency_first_of_job": 24604,
+ "lut": 168051,
+ "ff": 208444,
+ "dsp": 1600,
+ "bram": 384.0,
+ "uram": 0,
+ "rns": true,
+ "memOrg": "inplace",
+ "bubble": 19,
+ "out_first_last": [
+  [
+   16412,
+   24603
+  ],
+  [
+   24623,
+   32814
+  ],
+  [
+   32834,
+   41025
+  ]
+ ],
+ "out1_first_last": [
+  [
+   16412,
+   24603
+  ]
+ ],
+ "q": [
+  9223372036855103489,
+  9223372036855300097,
+  9223372036855103489
+ ],
+ "gen_seconds": 18,
+ "io_lanes_manifest": 8
+}

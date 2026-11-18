@@ -1,0 +1,489 @@
+{
+ "note": "OOC place and route, Vivado 2025.1, V80 part, 350 MHz (2.857 ns), DUT instance only; night of 2026-11-14",
+ "rows": {
+  "df_base": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 77663,
+    "ff": 74286,
+    "dsp": 1910,
+    "bram36": 53.0,
+    "uram": 0
+   },
+   "wns": 0.005
+  },
+  "df_rom": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "source": "rom"
+   },
+   "set": "fit",
+   "measured": {
+    "lut": 53906,
+    "ff": 50542,
+    "dsp": 1120,
+    "bram36": 84.0,
+    "uram": 0
+   },
+   "wns": 0.009
+  },
+  "df_n1k_p8_q30": {
+   "n": 1024,
+   "P": 8,
+   "mod": [
+    "q",
+    30
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "forward",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 18416,
+    "ff": 15956,
+    "dsp": 84,
+    "bram36": 6.0,
+    "uram": 0
+   },
+   "wns": 0.093
+  },
+  "df_p4_w64c": {
+   "n": 4096,
+   "P": 4,
+   "mod": [
+    "fam",
+    32,
+    32
+   ],
+   "red": "wlm",
+   "nwc": false,
+   "dir": "both",
+   "kw": {
+    "source": "ram",
+    "inverseScale": "stage"
+   },
+   "set": "fit",
+   "measured": {
+    "lut": 32869,
+    "ff": 50821,
+    "dsp": 315,
+    "bram36": 26.0,
+    "uram": 2
+   },
+   "wns": 0.037
+  },
+  "df_n1k_fold28": {
+   "n": 1024,
+   "P": 16,
+   "mod": 268369921,
+   "red": "fold",
+   "nwc": true,
+   "dir": "both",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 40045,
+    "ff": 31909,
+    "dsp": 288,
+    "bram36": 7.0,
+    "uram": 0
+   },
+   "wns": 0.118
+  },
+  "df_p8_mont52": {
+   "n": 4096,
+   "P": 8,
+   "mod": [
+    "q",
+    52
+   ],
+   "red": "mont",
+   "nwc": true,
+   "dir": "forward",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 58142,
+    "ff": 59539,
+    "dsp": 216,
+    "bram36": 37.0,
+    "uram": 0
+   },
+   "wns": 0.0
+  },
+  "df_n16k_p8_rec": {
+   "n": 16384,
+   "P": 8,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "source": "rec",
+    "inputRegister": true
+   },
+   "set": "fit",
+   "measured": {
+    "lut": 41082,
+    "ff": 42551,
+    "dsp": 960,
+    "bram36": 168.0,
+    "uram": 0
+   },
+   "wns": 0.023
+  },
+  "df_n256_shoup52": {
+   "n": 256,
+   "P": 16,
+   "mod": [
+    "q",
+    52
+   ],
+   "red": "shoup",
+   "nwc": true,
+   "dir": "forward",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 76888,
+    "ff": 59661,
+    "dsp": 352,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "wns": 0.002
+  },
+  "df_p2_w32c": {
+   "n": 4096,
+   "P": 2,
+   "mod": [
+    "fam",
+    16,
+    16
+   ],
+   "red": "wlm",
+   "nwc": false,
+   "dir": "both",
+   "kw": {
+    "source": "ram",
+    "inverseScale": "stage"
+   },
+   "set": "fit",
+   "measured": {
+    "lut": 7399,
+    "ff": 9835,
+    "dsp": 55,
+    "bram36": 10.0,
+    "uram": 1
+   },
+   "wns": 0.058
+  },
+  "df_n1k_p4_m36c": {
+   "n": 1024,
+   "P": 4,
+   "mod": [
+    "m",
+    36,
+    3
+   ],
+   "red": "barrett",
+   "nwc": false,
+   "dir": "forward",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 18587,
+    "ff": 31178,
+    "dsp": 374,
+    "bram36": 5.0,
+    "uram": 0
+   },
+   "wns": 0.212
+  },
+  "df_gs_q30_inv": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "q",
+    30
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "inverse",
+   "kw": {
+    "butterflyType": "GS",
+    "inverseScale": "stage"
+   },
+   "set": "fit",
+   "measured": {
+    "lut": 56528,
+    "ff": 54875,
+    "dsp": 192,
+    "bram36": 24.0,
+    "uram": 0
+   },
+   "wns": 0.039
+  },
+  "df_n8k_p32_q30": {
+   "n": 8192,
+   "P": 32,
+   "mod": [
+    "q",
+    30
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "forward",
+   "kw": {},
+   "set": "fit",
+   "measured": {
+    "lut": 100839,
+    "ff": 92540,
+    "dsp": 384,
+    "bram36": 48.0,
+    "uram": 0
+   },
+   "wns": -0.092
+  },
+  "ho_n2k_p8": {
+   "n": 2048,
+   "P": 8,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {},
+   "set": "held",
+   "measured": {
+    "lut": 39146,
+    "ff": 47020,
+    "dsp": 819,
+    "bram36": 27.0,
+    "uram": 0
+   },
+   "wns": 0.036
+  },
+  "ho_p8_w64": {
+   "n": 4096,
+   "P": 8,
+   "mod": [
+    "fam",
+    32,
+    32
+   ],
+   "red": "wlm",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "source": "ram"
+   },
+   "set": "held",
+   "measured": {
+    "lut": 66938,
+    "ff": 116524,
+    "dsp": 840,
+    "bram36": 60.0,
+    "uram": 0
+   },
+   "wns": 0.004
+  },
+  "ho_n16k_mont36c": {
+   "n": 16384,
+   "P": 16,
+   "mod": [
+    "q",
+    36
+   ],
+   "red": "mont",
+   "nwc": false,
+   "dir": "forward",
+   "kw": {},
+   "set": "held",
+   "measured": {
+    "lut": 70301,
+    "ff": 74918,
+    "dsp": 320,
+    "bram36": 56.0,
+    "uram": 0
+   },
+   "wns": 0.003
+  },
+  "ho_n512_p32_m52_otf": {
+   "n": 512,
+   "P": 32,
+   "mod": [
+    "m",
+    52,
+    2
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "source": "otf"
+   },
+   "set": "held",
+   "measured": {
+    "lut": 201106,
+    "ff": 394429,
+    "dsp": 4607,
+    "bram36": 0.0,
+    "uram": 0
+   },
+   "wns": 0.023
+  },
+  "df_unified": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "unified": true,
+    "inverseScale": "stage"
+   },
+   "set": "feat",
+   "measured": {
+    "lut": 97602,
+    "ff": 106611,
+    "dsp": 1920,
+    "bram36": 65.5,
+    "uram": 0
+   },
+   "wns": 0.035
+  },
+  "df_unified_rom": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "source": "rom",
+    "unified": true,
+    "inverseScale": "stage"
+   },
+   "set": "feat",
+   "measured": {
+    "lut": 68523,
+    "ff": 81622,
+    "dsp": 960,
+    "bram36": 208.0,
+    "uram": 0
+   },
+   "wns": 0.023
+  },
+  "df_natural": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "outputOrder": "natural"
+   },
+   "set": "feat",
+   "measured": {
+    "lut": 79620,
+    "ff": 75086,
+    "dsp": 1910,
+    "bram36": 61.0,
+    "uram": 0
+   },
+   "wns": 0.01
+  },
+  "df_ready": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "outReady": true
+   },
+   "set": "feat",
+   "measured": {
+    "lut": 77749,
+    "ff": 74148,
+    "dsp": 1910,
+    "bram36": 69.0,
+    "uram": 0
+   },
+   "wns": 0.006
+  },
+  "df_bram60": {
+   "n": 4096,
+   "P": 16,
+   "mod": [
+    "m",
+    30,
+    4
+   ],
+   "red": "barrett",
+   "nwc": true,
+   "dir": "both",
+   "kw": {
+    "source": "rom",
+    "bramTotal": 60
+   },
+   "set": "feat",
+   "measured": {
+    "lut": 64016,
+    "ff": 60333,
+    "dsp": 1440,
+    "bram36": 57.0,
+    "uram": 0
+   },
+   "wns": 0.027
+  }
+ }
+}

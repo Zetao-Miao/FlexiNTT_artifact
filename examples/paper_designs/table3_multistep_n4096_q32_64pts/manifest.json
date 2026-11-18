@@ -1,0 +1,15 @@
+{
+ "top_name": "MS_N12_q32_P64_tpm",
+ "kind": "multistep",
+ "N": 4096,
+ "sizes": [
+  64,
+  64
+ ],
+ "lanes": 64,
+ "frame_cycles": 64,
+ "latency": 246,
+ "moduli": 3,
+ "io_lanes": 64,
+ "cross_regs": 0
+}

@@ -1,0 +1,48 @@
+{
+ "row": "Ia_n4096_q60w_B8_rns",
+ "io": 2,
+ "n": 4096,
+ "B": 8,
+ "beats": 2048,
+ "polys": 3,
+ "tgt": 350.0,
+ "computeCycles": 3072,
+ "interval": 3092,
+ "latency_one_poly": 7197,
+ "latency_first_of_job": 7197,
+ "lut": 17517,
+ "ff": 19419,
+ "dsp": 120,
+ "bram": 40.0,
+ "uram": 0,
+ "rns": true,
+ "memOrg": "inplace",
+ "bubble": 20,
+ "out_first_last": [
+  [
+   5149,
+   7196
+  ],
+  [
+   8241,
+   10288
+  ],
+  [
+   11333,
+   13380
+  ]
+ ],
+ "out1_first_last": [
+  [
+   5149,
+   7196
+  ]
+ ],
+ "q": [
+  576460796326838273,
+  576460798474321921,
+  576460796326838273
+ ],
+ "gen_seconds": 2,
+ "io_lanes_manifest": 2
+}

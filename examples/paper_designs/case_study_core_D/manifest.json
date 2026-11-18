@@ -1,0 +1,17 @@
+{
+ "top_name": "ms_n65536_p32_4x16x32x32_tw_otf_fri_wlm_slots_rot2_sir_dspt5508",
+ "kind": "multistep",
+ "N": 65536,
+ "sizes": [
+  4,
+  16,
+  32,
+  32
+ ],
+ "lanes": 32,
+ "frame_cycles": 2048,
+ "latency": 3662,
+ "moduli": 5,
+ "io_lanes": 32,
+ "cross_regs": 0
+}

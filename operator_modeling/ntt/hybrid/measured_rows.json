@@ -1,0 +1,1623 @@
+{
+ "what": "hybrid NTT: routed out-of-context results, V80 (xcv80), Vivado 2025.1, 350 MHz, NTT core alone",
+ "rows": [
+  {
+   "name": "fo_base",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_base",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 18634,
+    "ff": 21575,
+    "dsp": 360,
+    "bram": 79.5,
+    "uram": 0,
+    "srl": 1753,
+    "wns": 0.123
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5633,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_ld",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_ld",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "loadable": true
+    }
+   ],
+   "measured": {
+    "lut": 20694,
+    "ff": 30758,
+    "dsp": 360,
+    "bram": 87.5,
+    "uram": 0,
+    "srl": 2407,
+    "wns": 0.145
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6196,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_shoup",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_shoup",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "shoup",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 17200,
+    "ff": 22173,
+    "dsp": 360,
+    "bram": 104,
+    "uram": 0,
+    "srl": 1485,
+    "wns": 0.101
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5513,
+    "late": 0,
+    "pass": true,
+    "interval": 1044,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_tree",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_tree",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "twiddleSource": "tree"
+    }
+   ],
+   "measured": {
+    "lut": 24988,
+    "ff": 27410,
+    "dsp": 531,
+    "bram": 63.5,
+    "uram": 0,
+    "srl": 2876,
+    "wns": 0.104
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6200,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_stream",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_stream",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "twiddleSource": "stream"
+    }
+   ],
+   "measured": {
+    "lut": 18249,
+    "ff": 21568,
+    "dsp": 360,
+    "bram": 48,
+    "uram": 0,
+    "srl": 1570,
+    "wns": 0.121
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5633,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_io4",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_io4",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "ioLanes": 4
+    }
+   ],
+   "measured": {
+    "lut": 18844,
+    "ff": 22218,
+    "dsp": 360,
+    "bram": 86.5,
+    "uram": 0,
+    "srl": 1753,
+    "wns": 0.109
+   },
+   "sim": {
+    "beats": 5120,
+    "first_in": 0,
+    "last_out": 7173,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_io64",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_io64",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "ioLanes": 64
+    }
+   ],
+   "measured": {
+    "lut": 19264,
+    "ff": 25436,
+    "dsp": 360,
+    "bram": 79.5,
+    "uram": 0,
+    "srl": 1753,
+    "wns": 0.133
+   },
+   "sim": {
+    "beats": 320,
+    "first_in": 0,
+    "last_out": 5635,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_xr2",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_xr2",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "crossRegs": 2
+    }
+   ],
+   "measured": {
+    "lut": 18679,
+    "ff": 23977,
+    "dsp": 360,
+    "bram": 87.5,
+    "uram": 0,
+    "srl": 1768,
+    "wns": 0.095
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6194,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_rl4",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_rl4",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "ramLatency": 4
+    }
+   ],
+   "measured": {
+    "lut": 19324,
+    "ff": 23469,
+    "dsp": 360,
+    "bram": 87.5,
+    "uram": 0,
+    "srl": 2400,
+    "wns": 0.129
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6194,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_fan8",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_fan8",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "fanout": 8
+    }
+   ],
+   "measured": {
+    "lut": 19184,
+    "ff": 22159,
+    "dsp": 360,
+    "bram": 79.5,
+    "uram": 0,
+    "srl": 1762,
+    "wns": 0.13
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5653,
+    "late": 0,
+    "pass": true,
+    "interval": 1072,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_fan16",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_fan16",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "fanout": 16
+    }
+   ],
+   "measured": {
+    "lut": 19146,
+    "ff": 21921,
+    "dsp": 360,
+    "bram": 79.5,
+    "uram": 0,
+    "srl": 1758,
+    "wns": 0.149
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5633,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_or",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_or",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "outReady": true
+    }
+   ],
+   "measured": {
+    "lut": 19014,
+    "ff": 22150,
+    "dsp": 360,
+    "bram": 95.5,
+    "uram": 0,
+    "srl": 1756,
+    "wns": 0.08
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5639,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_nat",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_nat",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "outputOrder": "natural"
+    }
+   ],
+   "measured": {
+    "lut": 20429,
+    "ff": 24118,
+    "dsp": 360,
+    "bram": 95.5,
+    "uram": 0,
+    "srl": 1755,
+    "wns": 0.078
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5898,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_rec",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_rec",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "loadable": true,
+     "twiddleBuffer": "record"
+    }
+   ],
+   "measured": {
+    "lut": 20809,
+    "ff": 30796,
+    "dsp": 360,
+    "bram": 87.5,
+    "uram": 0,
+    "srl": 2423,
+    "wns": 0.004
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 16392,
+    "last_out": 67927,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "record": true,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_uni",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_uni",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "unified": true
+    }
+   ],
+   "measured": {
+    "lut": 18640,
+    "ff": 26297,
+    "dsp": 216,
+    "bram": 144,
+    "uram": 0,
+    "srl": 2146,
+    "wns": 0.153
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6193,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_unishoup",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_unishoup",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "shoup",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "unified": true
+    }
+   ],
+   "measured": {
+    "lut": 17622,
+    "ff": 29008,
+    "dsp": 216,
+    "bram": 240,
+    "uram": 0,
+    "srl": 2098,
+    "wns": 0.151
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6187,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_bram48",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_bram48",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "twiddleSource": "auto",
+     "twiddleStyle": "block",
+     "bramBudget": 48
+    }
+   ],
+   "measured": {
+    "lut": 27462,
+    "ff": 30255,
+    "dsp": 612,
+    "bram": 48,
+    "uram": 0,
+    "srl": 2812,
+    "wns": 0.135
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 6200,
+    "late": 0,
+    "pass": true,
+    "interval": 1024,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_cyc",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_cyc",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    false,
+    "stage",
+    "auto",
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 15520,
+    "ff": 17198,
+    "dsp": 216,
+    "bram": 47.5,
+    "uram": 0,
+    "srl": 1311,
+    "wns": 0.188
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5625,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "fo_cycshare",
+   "kind": "point",
+   "heldout": false,
+   "spec": [
+    "fo_cycshare",
+    4096,
+    3,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    false,
+    "stage",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "shareInverseTwiddles": true
+    }
+   ],
+   "measured": {
+    "lut": 16631,
+    "ff": 17311,
+    "dsp": 216,
+    "bram": 39.5,
+    "uram": 0,
+    "srl": 1310,
+    "wns": 0.126
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 5625,
+    "late": 0,
+    "pass": true,
+    "interval": 1068,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "HY1_n4096_q30_u3g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "barrett",
+    "nwc": false,
+    "q": 536903681,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 13955,
+    "ff": 15007,
+    "dsp": 72,
+    "bram": 26.5,
+    "uram": 0,
+    "srl": 543,
+    "wns": 0.159
+   },
+   "sim": {
+    "interval": 1032,
+    "latency": 1318,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY1_n4096_q30_u3g2_d60",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "barrett",
+    "nwc": false,
+    "q": 536903681,
+    "dspFraction": 0.6,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 19957,
+    "ff": 19248,
+    "dsp": 24,
+    "bram": 26.5,
+    "uram": 0,
+    "srl": 543,
+    "wns": 0.017
+   },
+   "sim": {
+    "interval": 1032,
+    "latency": 1318,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY2_n8192_q52_u5g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 8192,
+    "U": 5,
+    "g": 2,
+    "red": "barrett",
+    "nwc": false,
+    "q": 4503599626321921,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 166746,
+    "ff": 224798,
+    "dsp": 960,
+    "bram": 190,
+    "uram": 0,
+    "srl": 7250,
+    "wns": 0.186
+   },
+   "sim": {
+    "interval": 384,
+    "latency": 832,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY2_n8192_q52_u5g2_d60",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 8192,
+    "U": 5,
+    "g": 2,
+    "red": "barrett",
+    "nwc": false,
+    "q": 4503599626321921,
+    "dspFraction": 0.6,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 240789,
+    "ff": 283698,
+    "dsp": 480,
+    "bram": 190,
+    "uram": 0,
+    "srl": 7249,
+    "wns": 0.128
+   },
+   "sim": {
+    "interval": 384,
+    "latency": 837,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY2_n8192_q52_u5g2_s1",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 8192,
+    "U": 5,
+    "g": 2,
+    "red": "barrett",
+    "nwc": false,
+    "q": 4503599626321921,
+    "slots": 1,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 166992,
+    "ff": 224716,
+    "dsp": 960,
+    "bram": 190,
+    "uram": 0,
+    "srl": 7241,
+    "wns": 0.109
+   },
+   "sim": {
+    "interval": 573,
+    "latency": 702,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY2_n8192_q52_u5g2_d60_s1",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 8192,
+    "U": 5,
+    "g": 2,
+    "red": "barrett",
+    "nwc": false,
+    "q": 4503599626321921,
+    "slots": 1,
+    "dspFraction": 0.6,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 242636,
+    "ff": 283309,
+    "dsp": 480,
+    "bram": 190,
+    "uram": 0,
+    "srl": 7249,
+    "wns": 0.079
+   },
+   "sim": {
+    "interval": 588,
+    "latency": 717,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY3_n65536_q32_u4g8",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 65536,
+    "U": 4,
+    "g": 8,
+    "red": "barrett",
+    "nwc": false,
+    "q": 2148728833,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 195395,
+    "ff": 234568,
+    "dsp": 768,
+    "bram": 319.5,
+    "uram": 0,
+    "srl": 4397,
+    "wns": 0.042
+   },
+   "sim": {
+    "interval": 2120,
+    "latency": 2662,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY3_n65536_q32_u4g8_d60",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 65536,
+    "U": 4,
+    "g": 8,
+    "red": "barrett",
+    "nwc": false,
+    "q": 2148728833,
+    "dspFraction": 0.6,
+    "extra": {}
+   },
+   "measured": {
+    "lut": 281848,
+    "ff": 306730,
+    "dsp": 256,
+    "bram": 319.5,
+    "uram": 0,
+    "srl": 4397,
+    "wns": 0.019
+   },
+   "sim": {
+    "interval": 2120,
+    "latency": 2662,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY1r_n4096_q30x4_nwc_u3g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "barrett",
+    "nwc": true,
+    "moduli": [
+     536903681,
+     536952833,
+     536977409,
+     537026561
+    ],
+    "extra": {}
+   },
+   "measured": {
+    "lut": 18671,
+    "ff": 21575,
+    "dsp": 360,
+    "bram": 79.5,
+    "uram": 0,
+    "srl": 1758,
+    "wns": 0.045
+   },
+   "sim": {
+    "interval": 1068,
+    "latency": 1362,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY1k_n4096_q30x4_nwc_u3g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "barrett",
+    "nwc": true,
+    "moduli": [
+     536903681,
+     536952833,
+     536977409,
+     537026561
+    ],
+    "extra": {
+     "twiddleSource": "auto"
+    }
+   },
+   "measured": {
+    "lut": 18671,
+    "ff": 21575,
+    "dsp": 360,
+    "bram": 79.5,
+    "uram": 0,
+    "srl": 1758,
+    "wns": 0.045
+   },
+   "sim": {
+    "interval": 1068,
+    "latency": 1362,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY1k8r_n4096_q30x8_nwc_u3g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "barrett",
+    "nwc": true,
+    "moduli": [
+     536903681,
+     536952833,
+     536977409,
+     537026561,
+     537133057,
+     537149441,
+     537272321,
+     537296897
+    ],
+    "extra": {
+     "twiddleSource": "rec",
+     "twistSource": "rec"
+    }
+   },
+   "measured": {
+    "lut": 33639,
+    "ff": 38756,
+    "dsp": 756,
+    "bram": 39,
+    "uram": 0,
+    "srl": 3541,
+    "wns": 0.044
+   },
+   "sim": {
+    "interval": 1024,
+    "latency": 2105,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY1kw_n4096_q30x4_nwc_u3g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "wlm",
+    "nwc": true,
+    "moduli": [
+     536903681,
+     537133057,
+     537296897,
+     537591809
+    ],
+    "family": [
+     15,
+     15
+    ],
+    "extra": {
+     "twiddleSource": "auto"
+    }
+   },
+   "measured": {
+    "lut": 17907,
+    "ff": 24820,
+    "dsp": 200,
+    "bram": 87.5,
+    "uram": 0,
+    "srl": 2597,
+    "wns": 0.006
+   },
+   "sim": {
+    "interval": 1024,
+    "latency": 2109,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "HY1kwu_n4096_q30x4_nwc_u3g2",
+   "kind": "row",
+   "heldout": false,
+   "spec": {
+    "n": 4096,
+    "U": 3,
+    "g": 2,
+    "red": "wlm",
+    "nwc": true,
+    "moduli": [
+     536903681,
+     537133057,
+     537296897,
+     537591809
+    ],
+    "family": [
+     15,
+     15
+    ],
+    "extra": {
+     "twiddleSource": "rom",
+     "unified": true
+    }
+   },
+   "measured": {
+    "lut": 17886,
+    "ff": 27930,
+    "dsp": 120,
+    "bram": 144,
+    "uram": 0,
+    "srl": 2399,
+    "wns": 0.128
+   },
+   "sim": {
+    "interval": 1024,
+    "latency": 2107,
+    "source": "timing written at generation (model.json); the design is a point of the xsim regression or passed the board system simulation at this interval"
+   }
+  },
+  {
+   "name": "ho_n1024u2g4_q36x3",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n1024u2g4_q36x3",
+    1024,
+    2,
+    4,
+    [
+     "m",
+     36,
+     3
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 17084,
+    "ff": 32178,
+    "dsp": 352,
+    "bram": 33,
+    "uram": 0,
+    "srl": 1442,
+    "wns": 0.483
+   },
+   "sim": {
+    "beats": 320,
+    "first_in": 0,
+    "last_out": 1965,
+    "late": 0,
+    "pass": true,
+    "interval": 320,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n16384u4g2_q32x2",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n16384u4g2_q32x2",
+    16384,
+    4,
+    2,
+    [
+     "m",
+     32,
+     2
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 56010,
+    "ff": 95865,
+    "dsp": 864,
+    "bram": 227.5,
+    "uram": 0,
+    "srl": 4504,
+    "wns": 0.295
+   },
+   "sim": {
+    "beats": 2560,
+    "first_in": 0,
+    "last_out": 12362,
+    "late": 0,
+    "pass": true,
+    "interval": 2048,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n4096u3g1_q52",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n4096u3g1_q52",
+    4096,
+    3,
+    1,
+    [
+     "m",
+     52,
+     1
+    ],
+    "barrett",
+    false,
+    "stage",
+    "auto",
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 13257,
+    "ff": 18304,
+    "dsp": 72,
+    "bram": 37.5,
+    "uram": 0,
+    "srl": 579,
+    "wns": 0.127
+   },
+   "sim": {
+    "beats": 2560,
+    "first_in": 0,
+    "last_out": 10792,
+    "late": 0,
+    "pass": true,
+    "interval": 2048,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n2048u2g2_q30x4_s1",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n2048u2g2_q30x4_s1",
+    2048,
+    2,
+    2,
+    [
+     "m",
+     30,
+     4
+    ],
+    "barrett",
+    false,
+    "stage",
+    1,
+    5,
+    null,
+    "mix"
+   ],
+   "measured": {
+    "lut": 5855,
+    "ff": 6717,
+    "dsp": 72,
+    "bram": 24.5,
+    "uram": 0,
+    "srl": 597,
+    "wns": 0.182
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 7964,
+    "late": 0,
+    "pass": true,
+    "interval": 1536,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n8192u3g4_q40x2_opts",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n8192u3g4_q40x2_opts",
+    8192,
+    3,
+    4,
+    [
+     "m",
+     40,
+     2
+    ],
+    "shoup",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "crossRegs": 1,
+     "ramLatency": 3,
+     "outputOrder": "natural"
+    }
+   ],
+   "measured": {
+    "lut": 56652,
+    "ff": 106706,
+    "dsp": 832,
+    "bram": 271.5,
+    "uram": 0,
+    "srl": 5362,
+    "wns": 0.262
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 7999,
+    "late": 0,
+    "pass": true,
+    "interval": 1280,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n2048u4g1_q36x2_ld",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n2048u4g1_q36x2_ld",
+    2048,
+    4,
+    1,
+    [
+     "m",
+     36,
+     2
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "loadable": true,
+     "ioLanes": 8
+    }
+   ],
+   "measured": {
+    "lut": 29108,
+    "ff": 54263,
+    "dsp": 528,
+    "bram": 40,
+    "uram": 0,
+    "srl": 4040,
+    "wns": 0.296
+   },
+   "sim": {
+    "beats": 1280,
+    "first_in": 0,
+    "last_out": 2766,
+    "late": 0,
+    "pass": true,
+    "interval": 384,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n16384u2g8_q30x2_tree",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n16384u2g8_q30x2_tree",
+    16384,
+    2,
+    8,
+    [
+     "m",
+     30,
+     2
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "twiddleSource": "tree"
+    }
+   ],
+   "measured": {
+    "lut": 37656,
+    "ff": 39610,
+    "dsp": 837,
+    "bram": 123,
+    "uram": 0,
+    "srl": 3810,
+    "wns": 0.058
+   },
+   "sim": {
+    "beats": 2560,
+    "first_in": 0,
+    "last_out": 18477,
+    "late": 0,
+    "pass": true,
+    "interval": 3584,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  },
+  {
+   "name": "ho_n4096u4g2_q44x2_uni",
+   "kind": "point",
+   "heldout": true,
+   "spec": [
+    "ho_n4096u4g2_q44x2_uni",
+    4096,
+    4,
+    2,
+    [
+     "m",
+     44,
+     2
+    ],
+    "barrett",
+    true,
+    "output",
+    "auto",
+    5,
+    null,
+    "mix",
+    {
+     "unified": true
+    }
+   ],
+   "measured": {
+    "lut": 76229,
+    "ff": 120647,
+    "dsp": 640,
+    "bram": 192,
+    "uram": 0,
+    "srl": 8995,
+    "wns": 0.175
+   },
+   "sim": {
+    "beats": 640,
+    "first_in": 0,
+    "last_out": 2387,
+    "late": 0,
+    "pass": true,
+    "interval": 384,
+    "polys": 5,
+    "source": "xsim, real multipliers, every beat checked for value and cycle"
+   }
+  }
+ ]
+}

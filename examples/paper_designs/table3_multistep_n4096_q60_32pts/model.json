@@ -1,0 +1,146 @@
+{
+ "row": "MS_N12_q60_P32_tpm",
+ "tpntt": "60 / 2^12 / 32: 250k LUT, 2112 DSP, 32 RAM, 250 MHz, 0.52 us, one reloadable modulus (TP-NTT-matched)",
+ "N": 4096,
+ "sizes": [
+  32,
+  4,
+  32
+ ],
+ "P": 32,
+ "M": 2,
+ "latency": 388,
+ "interval": 128,
+ "total": {
+  "lut": 264912,
+  "dsp": 2688,
+  "bram36": 48.0,
+  "uram": 0,
+  "score": 548112.0
+ },
+ "parts": {
+  "pass0": {
+   "lut": 90640,
+   "dsp": 960,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 83
+  },
+  "pass1": {
+   "lut": 35392,
+   "dsp": 384,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 34
+  },
+  "pass2": {
+   "lut": 88480,
+   "dsp": 960,
+   "bram36": 16,
+   "uram": null,
+   "source": null,
+   "latency": 82
+  },
+  "T1": {
+   "lut": 4096,
+   "dsp": 0,
+   "bram36": 32.0,
+   "uram": 0,
+   "source": null,
+   "latency": 131
+  },
+  "T2": {
+   "lut": 12064,
+   "dsp": 0,
+   "bram36": 0.0,
+   "uram": 0,
+   "source": null,
+   "latency": 39
+  },
+  "tw3": {
+   "lut": 25120,
+   "dsp": 384,
+   "bram36": 0,
+   "uram": 0,
+   "source": "rom",
+   "latency": null
+  },
+  "ports1": {
+   "lut": 1440,
+   "dsp": 0,
+   "bram36": 0,
+   "uram": 0,
+   "source": null,
+   "latency": null
+  },
+  "ports2": {
+   "lut": 7680,
+   "dsp": 0,
+   "bram36": 0,
+   "uram": 0,
+   "source": null,
+   "latency": null
+  }
+ },
+ "multipliers": {
+  "butterflies": 192,
+  "twiddle": 32,
+  "generators": 0,
+  "subTwist": 0
+ },
+ "sources": {
+  "3": "rom"
+ },
+ "gen_s": 59,
+ "dirs": [
+  "fwd",
+  "inv",
+  "fwd"
+ ],
+ "gaps": [
+  0,
+  3,
+  0
+ ],
+ "form": "folded",
+ "formDecision": {
+  "pick": {
+   "form": "folded",
+   "source": null
+  },
+  "pickBuildable": {
+   "form": "folded",
+   "source": null
+  },
+  "reason": "least memory 32 BRAM36-eq (tolerance 16): twist/rom, twist/otf, twist/tree, folded; folded has the fewest multipliers (224)",
+  "reasonBuildable": "least memory 32 BRAM36-eq (tolerance 16): twist/rom, twist/otf, twist/tree, folded; folded has the fewest multipliers (224)",
+  "rule": null,
+  "budget": null,
+  "leanDsp": null,
+  "table": "| candidate | multipliers (bu / inter / inv / gen) | DSP | BRAM36 | URAM | BRAM36 + 8 URAM | twiddle words/prime/dir | latency |\n|---|---|---|---|---|---|---|---|\n| twist/rom | 233 (137 / 64 / 32 / 0) | 2796 | 32 | 0 | 32 | 4100 | 388 |\n| twist/otf | 297 (137 / 64 / 32 / 64) | 3564 | 32 | 0 | 32 | 820 | 414 |\n| twist/tree | 309 (137 / 64 / 32 / 76) | 3708 | 32 | 0 | 32 | 78 | 505 |\n| folded **(pick)** | 224 (192 / 0 / 32 / 0) | 2688 | 32 | 0 | 32 | 8160 | 377 |"
+ },
+ "dspSplit": null,
+ "reloads": [
+  {
+   "q": 1152059487490670593,
+   "cycles": 16387,
+   "words": 16382,
+   "drain": 0
+  },
+  {
+   "q": 1151769216420937729,
+   "cycles": 16775,
+   "words": 16382,
+   "drain": 388
+  },
+  {
+   "q": 1151769216420937729,
+   "cycles": 392,
+   "words": 0,
+   "drain": 388,
+   "dirOnly": true
+  }
+ ]
+}

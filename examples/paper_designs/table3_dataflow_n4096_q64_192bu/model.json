@@ -1,0 +1,21 @@
+{
+ "row": "K1_A4096_q64w32_P32ic",
+ "source": "rom",
+ "mode": "slot1",
+ "name": "LDd_rom1",
+ "latency": 364,
+ "F": 128,
+ "frames": 3,
+ "moduli": 1,
+ "model": {
+  "lut": 245359.8,
+  "ff": 462761.0,
+  "dsp": 2415.0,
+  "bram36": 64.0,
+  "uram": 0.0
+ },
+ "gen_s": 14,
+ "slots": 1,
+ "loadLanes": 1,
+ "loadWords": 8158
+}

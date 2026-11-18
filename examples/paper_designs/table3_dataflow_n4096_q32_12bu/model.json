@@ -1,0 +1,21 @@
+{
+ "row": "K1_A4096_q32w16_P2c",
+ "source": "rom",
+ "mode": "slot1",
+ "name": "LDb_rom1",
+ "latency": 2218,
+ "F": 2048,
+ "frames": 3,
+ "moduli": 1,
+ "model": {
+  "lut": 7688.200000000001,
+  "ff": 14076.0,
+  "dsp": 55.0,
+  "bram36": 10.5,
+  "uram": 1.0
+ },
+ "gen_s": 3,
+ "slots": 1,
+ "loadLanes": 1,
+ "loadWords": 8188
+}

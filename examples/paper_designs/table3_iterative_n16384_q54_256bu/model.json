@@ -1,0 +1,48 @@
+{
+ "row": "Ic_n16384_q54b_B256_auto_rns_rec2",
+ "io": 32,
+ "n": 16384,
+ "B": 256,
+ "beats": 512,
+ "polys": 3,
+ "tgt": 350.0,
+ "computeCycles": 462,
+ "interval": 512,
+ "latency_one_poly": 1516,
+ "latency_first_of_job": 1516,
+ "lut": 503535,
+ "ff": 934091,
+ "dsp": 7680,
+ "bram": 256.0,
+ "uram": 0,
+ "rns": true,
+ "memOrg": "constgeo",
+ "bubble": 20,
+ "out_first_last": [
+  [
+   1004,
+   1515
+  ],
+  [
+   1516,
+   2027
+  ],
+  [
+   2028,
+   2539
+  ]
+ ],
+ "out1_first_last": [
+  [
+   1004,
+   1515
+  ]
+ ],
+ "q": [
+  9007199255019521,
+  9007199255347201,
+  9007199255019521
+ ],
+ "gen_seconds": 8,
+ "io_lanes_manifest": 32
+}

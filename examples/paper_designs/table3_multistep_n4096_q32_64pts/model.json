@@ -1,0 +1,121 @@
+{
+ "row": "MS_N12_q32_P64_tpm",
+ "tpntt": "32 / 2^12 / 64: 242k LUT, 1920 DSP, 0 RAM, 250 MHz, 0.27 us, one reloadable modulus (TP-NTT-matched)",
+ "N": 4096,
+ "sizes": [
+  64,
+  64
+ ],
+ "P": 64,
+ "M": 3,
+ "latency": 246,
+ "interval": 64,
+ "total": {
+  "lut": 266688,
+  "dsp": 2240,
+  "bram36": 32.0,
+  "uram": 0,
+  "score": 500288.0
+ },
+ "parts": {
+  "pass0": {
+   "lut": 113920,
+   "dsp": 960,
+   "bram36": 0,
+   "uram": null,
+   "source": null,
+   "latency": 81
+  },
+  "pass1": {
+   "lut": 111360,
+   "dsp": 960,
+   "bram36": 32,
+   "uram": null,
+   "source": null,
+   "latency": 80
+  },
+  "T1": {
+   "lut": 15168,
+   "dsp": 0,
+   "bram36": 0.0,
+   "uram": 0,
+   "source": null,
+   "latency": 71
+  },
+  "tw2": {
+   "lut": 21888,
+   "dsp": 320,
+   "bram36": 0,
+   "uram": 0,
+   "source": "rom",
+   "latency": null
+  },
+  "ports1": {
+   "lut": 4352,
+   "dsp": 0,
+   "bram36": 0,
+   "uram": 0,
+   "source": null,
+   "latency": null
+  }
+ },
+ "multipliers": {
+  "butterflies": 384,
+  "twiddle": 64,
+  "generators": 0,
+  "subTwist": 0
+ },
+ "sources": {
+  "2": "rom"
+ },
+ "gen_s": 104,
+ "dirs": [
+  "fwd",
+  "inv",
+  "fwd"
+ ],
+ "gaps": [
+  0,
+  0,
+  0
+ ],
+ "form": "folded",
+ "formDecision": {
+  "pick": {
+   "form": "folded",
+   "source": null
+  },
+  "pickBuildable": {
+   "form": "folded",
+   "source": null
+  },
+  "reason": "least memory 0 BRAM36-eq (tolerance 16): twist/rom, twist/otf, twist/tree, folded; folded has the fewest multipliers (448)",
+  "reasonBuildable": "least memory 0 BRAM36-eq (tolerance 16): twist/rom, twist/otf, twist/tree, folded; folded has the fewest multipliers (448)",
+  "rule": null,
+  "budget": null,
+  "leanDsp": null,
+  "table": "| candidate | multipliers (bu / inter / inv / gen) | DSP | BRAM36 | URAM | BRAM36 + 8 URAM | twiddle words/prime/dir | latency |\n|---|---|---|---|---|---|---|---|\n| twist/rom | 449 (321 / 64 / 64 / 0) | 2245 | 0 | 0 | 0 | 4096 | 245 |\n| twist/otf | 513 (321 / 64 / 64 / 64) | 2565 | 0 | 0 | 0 | 1024 | 255 |\n| twist/tree | 518 (321 / 64 / 64 / 69) | 2590 | 0 | 0 | 0 | 80 | 315 |\n| folded **(pick)** | 448 (384 / 0 / 64 / 0) | 2240 | 0 | 0 | 0 | 8128 | 247 |"
+ },
+ "dspSplit": null,
+ "reloads": [
+  {
+   "q": 4293918721,
+   "cycles": 16387,
+   "words": 16382,
+   "drain": 0
+  },
+  {
+   "q": 4292804609,
+   "cycles": 16633,
+   "words": 16382,
+   "drain": 246
+  },
+  {
+   "q": 4292804609,
+   "cycles": 250,
+   "words": 0,
+   "drain": 246,
+   "dirOnly": true
+  }
+ ]
+}

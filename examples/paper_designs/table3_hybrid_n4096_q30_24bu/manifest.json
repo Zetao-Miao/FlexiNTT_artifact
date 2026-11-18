@@ -1,0 +1,366 @@
+{
+  "top_name": "ev_ld_io4",
+  "io_lanes": 4,
+  "n": 4096,
+  "stages": 3,
+  "groups": 2,
+  "lanes": 16,
+  "rounds": 4,
+  "bypassed": 0,
+  "contexts": 1,
+  "slot": 270,
+  "interval": 1080,
+  "width": 30,
+  "out_width": 30,
+  "bu_latency": 11,
+  "in_offset": 7,
+  "block_out": 43,
+  "write_offset": 46,
+  "out_offset": 53,
+  "fifo_depth": 256,
+  "tables": 35,
+  "midx_bits": 2,
+  "dir_port": true,
+  "moduli": [
+    537133057,
+    537149441,
+    537272321,
+    537296897
+  ],
+  "loadable": true,
+  "load_sel_bits": 6,
+  "load_addr_bits": 11,
+  "load_data_bits": 32,
+  "load_map": [
+    {
+      "sel": 0,
+      "name": "ev_ld_io4_k_tw0",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 1,
+      "name": "ev_ld_io4_k_tw1",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 2,
+      "name": "ev_ld_io4_k_tw2",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 3,
+      "name": "ev_ld_io4_k_tw3",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 4,
+      "name": "ev_ld_io4_k_tw4",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 5,
+      "name": "ev_ld_io4_k_tw5",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 6,
+      "name": "ev_ld_io4_k_tw6",
+      "width": 30,
+      "depth": 8
+    },
+    {
+      "sel": 7,
+      "name": "ev_ld_io4_k_tw7",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 8,
+      "name": "ev_ld_io4_k_tw8",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 9,
+      "name": "ev_ld_io4_k_tw9",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 10,
+      "name": "ev_ld_io4_k_tw10",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 11,
+      "name": "ev_ld_io4_k_tw11",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 12,
+      "name": "ev_ld_io4_k_tw12",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 13,
+      "name": "ev_ld_io4_k_tw13",
+      "width": 30,
+      "depth": 64
+    },
+    {
+      "sel": 14,
+      "name": "ev_ld_io4_k_tw14",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 15,
+      "name": "ev_ld_io4_k_tw15",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 16,
+      "name": "ev_ld_io4_k_tw16",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 17,
+      "name": "ev_ld_io4_k_tw17",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 18,
+      "name": "ev_ld_io4_k_tw18",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 19,
+      "name": "ev_ld_io4_k_tw19",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 20,
+      "name": "ev_ld_io4_k_tw20",
+      "width": 30,
+      "depth": 512
+    },
+    {
+      "sel": 21,
+      "name": "ev_ld_io4_k_tw21",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 22,
+      "name": "ev_ld_io4_k_tw22",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 23,
+      "name": "ev_ld_io4_k_tw23",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 24,
+      "name": "ev_ld_io4_k_tw24",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 25,
+      "name": "ev_ld_io4_k_tw25",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 26,
+      "name": "ev_ld_io4_k_tw26",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 27,
+      "name": "ev_ld_io4_k_tw27",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 28,
+      "name": "ev_ld_io4_k_tw28",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 29,
+      "name": "ev_ld_io4_k_tw29",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 30,
+      "name": "ev_ld_io4_k_tw30",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 31,
+      "name": "ev_ld_io4_k_tw31",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 32,
+      "name": "ev_ld_io4_k_tw32",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 33,
+      "name": "ev_ld_io4_k_tw33",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 34,
+      "name": "ev_ld_io4_k_tw34",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 35,
+      "name": "ev_ld_io4_k_tt0",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 36,
+      "name": "ev_ld_io4_k_tt1",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 37,
+      "name": "ev_ld_io4_k_tt2",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 38,
+      "name": "ev_ld_io4_k_tt3",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 39,
+      "name": "ev_ld_io4_k_tt4",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 40,
+      "name": "ev_ld_io4_k_tt5",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 41,
+      "name": "ev_ld_io4_k_tt6",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 42,
+      "name": "ev_ld_io4_k_tt7",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 43,
+      "name": "ev_ld_io4_k_tt8",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 44,
+      "name": "ev_ld_io4_k_tt9",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 45,
+      "name": "ev_ld_io4_k_tt10",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 46,
+      "name": "ev_ld_io4_k_tt11",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 47,
+      "name": "ev_ld_io4_k_tt12",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 48,
+      "name": "ev_ld_io4_k_tt13",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 49,
+      "name": "ev_ld_io4_k_tt14",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 50,
+      "name": "ev_ld_io4_k_tt15",
+      "width": 30,
+      "depth": 2048
+    },
+    {
+      "sel": 51,
+      "name": "hq_bu_Q",
+      "width": 30,
+      "depth": 4
+    },
+    {
+      "sel": 52,
+      "name": "hq_bu_MU",
+      "width": 32,
+      "depth": 4
+    },
+    {
+      "sel": 53,
+      "name": "hq_twist_Q",
+      "width": 30,
+      "depth": 4
+    },
+    {
+      "sel": 54,
+      "name": "hq_twist_MU",
+      "width": 32,
+      "depth": 4
+    }
+  ]
+}

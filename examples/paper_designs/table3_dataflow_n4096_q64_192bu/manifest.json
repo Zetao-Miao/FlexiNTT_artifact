@@ -1,0 +1,1156 @@
+{
+  "top_name": "LDd_rom1",
+  "n": 4096,
+  "lanes": 32,
+  "frame_cycles": 128,
+  "latency": 364,
+  "modules": [
+    "LDd_rom1_s0_c0",
+    "LDd_rom1_s10_bu",
+    "LDd_rom1_s11_bu",
+    "LDd_rom1_s1_bu",
+    "LDd_rom1_s1_c0",
+    "LDd_rom1_s2_bu",
+    "LDd_rom1_s2_c0",
+    "LDd_rom1_s3_bu",
+    "LDd_rom1_s3_c0",
+    "LDd_rom1_s4_bu",
+    "LDd_rom1_s4_c0",
+    "LDd_rom1_s5_bu",
+    "LDd_rom1_s6_bu",
+    "LDd_rom1_s7_bu",
+    "LDd_rom1_s8_bu",
+    "LDd_rom1_s9_bu"
+  ],
+  "tables": 127,
+  "load_words": 8158,
+  "q_ports": [
+    "QH",
+    "QHALF"
+  ],
+  "q_port_widths": [
+    32,
+    64
+  ],
+  "in_width": 64,
+  "out_width": 64,
+  "dir_port": true,
+  "tw_width": 64,
+  "test_cycles": 384,
+  "load_lanes": 1,
+  "load_by_dir": false,
+  "stream_classes": 0,
+  "stream_width": 0,
+  "stages": [
+    {
+      "exchange": null,
+      "buLatency": 3
+    },
+    {
+      "exchange": null,
+      "buLatency": 19
+    },
+    {
+      "exchange": null,
+      "buLatency": 19
+    },
+    {
+      "exchange": null,
+      "buLatency": 19
+    },
+    {
+      "exchange": null,
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        0,
+        1
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        1,
+        1,
+        2
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        2,
+        2,
+        4
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        3,
+        3,
+        8
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        4,
+        4,
+        16
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        0,
+        5,
+        32
+      ],
+      "buLatency": 19
+    },
+    {
+      "exchange": [
+        1,
+        6,
+        64
+      ],
+      "buLatency": 19
+    }
+  ],
+  "moduli": 1,
+  "modulus_index_bits": 1,
+  "lead": 1,
+  "per_frame_dir": true,
+  "loadable_moduli": true,
+  "slot_tables": [
+    {
+      "id": 0,
+      "base": 0,
+      "words": 2,
+      "offsets": [
+        4,
+        25,
+        46,
+        67
+      ]
+    },
+    {
+      "id": 1,
+      "base": 2,
+      "words": 2,
+      "offsets": [
+        25,
+        46,
+        67
+      ]
+    },
+    {
+      "id": 2,
+      "base": 4,
+      "words": 2,
+      "offsets": [
+        25,
+        46,
+        67
+      ]
+    },
+    {
+      "id": 3,
+      "base": 6,
+      "words": 2,
+      "offsets": [
+        46,
+        67
+      ]
+    },
+    {
+      "id": 4,
+      "base": 8,
+      "words": 2,
+      "offsets": [
+        46,
+        67
+      ]
+    },
+    {
+      "id": 5,
+      "base": 10,
+      "words": 2,
+      "offsets": [
+        46,
+        67
+      ]
+    },
+    {
+      "id": 6,
+      "base": 12,
+      "words": 2,
+      "offsets": [
+        46,
+        67
+      ]
+    },
+    {
+      "id": 7,
+      "base": 14,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 8,
+      "base": 16,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 9,
+      "base": 18,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 10,
+      "base": 20,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 11,
+      "base": 22,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 12,
+      "base": 24,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 13,
+      "base": 26,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 14,
+      "base": 28,
+      "words": 2,
+      "offsets": [
+        67
+      ]
+    },
+    {
+      "id": 15,
+      "base": 30,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 16,
+      "base": 34,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 17,
+      "base": 38,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 18,
+      "base": 42,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 19,
+      "base": 46,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 20,
+      "base": 50,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 21,
+      "base": 54,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 22,
+      "base": 58,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 23,
+      "base": 62,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 24,
+      "base": 66,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 25,
+      "base": 70,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 26,
+      "base": 74,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 27,
+      "base": 78,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 28,
+      "base": 82,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 29,
+      "base": 86,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 30,
+      "base": 90,
+      "words": 4,
+      "offsets": [
+        89
+      ]
+    },
+    {
+      "id": 31,
+      "base": 94,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 32,
+      "base": 102,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 33,
+      "base": 110,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 34,
+      "base": 118,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 35,
+      "base": 126,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 36,
+      "base": 134,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 37,
+      "base": 142,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 38,
+      "base": 150,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 39,
+      "base": 158,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 40,
+      "base": 166,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 41,
+      "base": 174,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 42,
+      "base": 182,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 43,
+      "base": 190,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 44,
+      "base": 198,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 45,
+      "base": 206,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 46,
+      "base": 214,
+      "words": 8,
+      "offsets": [
+        112
+      ]
+    },
+    {
+      "id": 47,
+      "base": 222,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 48,
+      "base": 238,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 49,
+      "base": 254,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 50,
+      "base": 270,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 51,
+      "base": 286,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 52,
+      "base": 302,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 53,
+      "base": 318,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 54,
+      "base": 334,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 55,
+      "base": 350,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 56,
+      "base": 366,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 57,
+      "base": 382,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 58,
+      "base": 398,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 59,
+      "base": 414,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 60,
+      "base": 430,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 61,
+      "base": 446,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 62,
+      "base": 462,
+      "words": 16,
+      "offsets": [
+        137
+      ]
+    },
+    {
+      "id": 63,
+      "base": 478,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 64,
+      "base": 510,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 65,
+      "base": 542,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 66,
+      "base": 574,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 67,
+      "base": 606,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 68,
+      "base": 638,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 69,
+      "base": 670,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 70,
+      "base": 702,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 71,
+      "base": 734,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 72,
+      "base": 766,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 73,
+      "base": 798,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 74,
+      "base": 830,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 75,
+      "base": 862,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 76,
+      "base": 894,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 77,
+      "base": 926,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 78,
+      "base": 958,
+      "words": 32,
+      "offsets": [
+        166
+      ]
+    },
+    {
+      "id": 79,
+      "base": 990,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 80,
+      "base": 1054,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 81,
+      "base": 1118,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 82,
+      "base": 1182,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 83,
+      "base": 1246,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 84,
+      "base": 1310,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 85,
+      "base": 1374,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 86,
+      "base": 1438,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 87,
+      "base": 1502,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 88,
+      "base": 1566,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 89,
+      "base": 1630,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 90,
+      "base": 1694,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 91,
+      "base": 1758,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 92,
+      "base": 1822,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 93,
+      "base": 1886,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 94,
+      "base": 1950,
+      "words": 64,
+      "offsets": [
+        203
+      ]
+    },
+    {
+      "id": 95,
+      "base": 2014,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 96,
+      "base": 2142,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 97,
+      "base": 2270,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 98,
+      "base": 2398,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 99,
+      "base": 2526,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 100,
+      "base": 2654,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 101,
+      "base": 2782,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 102,
+      "base": 2910,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 103,
+      "base": 3038,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 104,
+      "base": 3166,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 105,
+      "base": 3294,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 106,
+      "base": 3422,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 107,
+      "base": 3550,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 108,
+      "base": 3678,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 109,
+      "base": 3806,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 110,
+      "base": 3934,
+      "words": 128,
+      "offsets": [
+        256
+      ]
+    },
+    {
+      "id": 111,
+      "base": 4062,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 112,
+      "base": 4318,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 113,
+      "base": 4574,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 114,
+      "base": 4830,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 115,
+      "base": 5086,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 116,
+      "base": 5342,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 117,
+      "base": 5598,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 118,
+      "base": 5854,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 119,
+      "base": 6110,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 120,
+      "base": 6366,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 121,
+      "base": 6622,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 122,
+      "base": 6878,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 123,
+      "base": 7134,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 124,
+      "base": 7390,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 125,
+      "base": 7646,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    },
+    {
+      "id": 126,
+      "base": 7902,
+      "words": 256,
+      "offsets": [
+        341
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+# Allam et al. 2026 ("End-to-End NTT on FPGA for FHE Acceleration", V80), matched request, 2026-11-15. Second version: the same DSP count, the other limits 1.1 x theirs.
+# Their kernel (Table 6, whole kernel with its FIFOs): 670k LUT / 1,259k FF / 407 BRAM / 188 URAM / 6,480 DSP,
+# 400 MHz, 5.12 us per transform (2,048 cycles), N = 2^16, primes of up to 62 bits, word-level Montgomery,
+# roots store for 64 primes and both directions, 32 coefficients (1,984 bits) per cycle in and out.
+
+[ntt]
+points = 65536
+modulus_bits = 62                       # run-time moduli, as theirs (any prime q = 1 mod 2N, roots loaded at setup)
+modulus_form = "ntt"
+num_moduli = 64
+transform = "negacyclic"
+direction = "both"
+modulus_per_polynomial = true           # each limb has its own prime
+direction_per_polynomial = false        # theirs changes direction only on an empty pipeline
+modulus_slots = "either"
+output_order = "any"
+output_backpressure = false
+
+[performance]
+clock_mhz = 400
+min_ntt_per_second = 195312             # 400 MHz / 2,048 cycles
+max_latency_us = 1e9                    # not stated in the paper
+
+[resources]
+max_dsp = 6480                          # the same as theirs
+max_lut = 737_000                       # 1.1 x 670k
+max_ff = 1_384_900                      # 1.1 x 1,259k
+max_bram36 = 448                        # 1.1 x 407
+max_uram = 207                          # 1.1 x 188
+
+[bandwidth]
+data_in_bits_per_cycle = 1984           # 32 coefficients of 62 bits
+data_out_bits_per_cycle = 1984
+allow_twiddle_stream = false            # theirs generates the twiddles inside
+allow_table_load = true                 # theirs loads the roots of every prime from HBM at setup
+allow_record_stream = true              # the modulus of each limb
+max_outside_table_bits = 1e12
+
+[search]
+architectures = ["iterative", "hybrid", "dataflow", "multistep"]
+allow_timing_risk = true
+sizing = "minimal"
+
+# NOT narrowed (2026-11-16): only the reduction is fixed, as in their design; every other option list is the default
+[search.options.iterative]
+reduction = ["wlm"]
+[search.options.hybrid]
+reduction = ["wlm"]
+[search.options.dataflow]
+reduction = ["wlm"]
+[search.options.multistep]
+reduction = ["wlm"]
+[run]
+show = "front"

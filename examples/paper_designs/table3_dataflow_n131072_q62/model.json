@@ -1,0 +1,21 @@
+{
+ "row": "K1_A131072_q62b_P8ci_odd",
+ "source": "rom",
+ "mode": "slot1",
+ "name": "LDe_rom1",
+ "latency": 16677,
+ "F": 16384,
+ "frames": 3,
+ "moduli": 1,
+ "model": {
+  "lut": 79114.2,
+  "ff": 179609.0,
+  "dsp": 1586.0,
+  "bram36": 278.0,
+  "uram": 60.0
+ },
+ "gen_s": 52,
+ "slots": 1,
+ "loadLanes": 1,
+ "loadWords": 262134
+}
