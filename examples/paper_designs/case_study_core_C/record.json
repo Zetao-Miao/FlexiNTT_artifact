@@ -23,7 +23,7 @@
   "memStyle": "auto",
   "swapPolicy": "recent",
   "portAlign": "data",
-  "ramLatency": 2,
+  "ramLatency": 3,
   "crossRegs": 0,
   "crossAt": "all",
   "tableShare": 8,
