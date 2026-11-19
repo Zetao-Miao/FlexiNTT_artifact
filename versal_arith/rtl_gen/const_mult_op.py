@@ -8,7 +8,7 @@ self-checking testbench.
 Relationship to `rtl_gen/const_mult.py`
 ---------------------------------------
 That module stays exactly as it is; it backs `cli.py -operator cmult` and the
-checked-in ARITH 2026 examples. The difference is where the numbers come from:
+earlier examples. The difference is where the numbers come from:
 
   legacy   `Cmult_RTL_gen(width_a, constant, ...)` derives the output width, the
            NAF, and the implementation strategy itself, and samples its own

@@ -185,7 +185,7 @@ def heapLutCost(layer_list: list, final_heights: list[int]) -> int:
     """Total LUT cost of a compressor tree: GPC layers plus the terminal adder.
 
     The GPC part is exact — `Counter.LUT_cost` is the per-GPC model from the
-    ARITH 2026 paper, and this is the same sum `compressAll` prints under
+    LUT arithmetic model, and this is the same sum `compressAll` prints under
     `printUsage`. The terminal-adder part follows `terminalAdderLutCost`.
     """
     gpc = sum(

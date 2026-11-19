@@ -310,7 +310,7 @@ register('Adder', Implementation(
 register('Compressor', Implementation(
     'compressor_RTL_gen', generators=('rtl_gen.compressor.compressor_RTL_gen',),
     backend=('Bit Heap Compressors',), status='hardware', gate='runLutTiming.py',
-    note='GPC heuristic of the ePrint 2026/344 paper'))
+    note='GPC heuristic'))
 register('MatrixTranspose', Implementation(
     'BarrelMemoryBarrelTranspose', f'{_OM}.transpose.MatrixTransposeScheme.BarrelMemoryBarrelTranspose',
     f'{_OM}.transpose.MatrixTranspose.MatrixTranspose', 'transpose_spec.TransposeOperatorSpec',
